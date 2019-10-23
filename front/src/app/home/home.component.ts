@@ -4,6 +4,9 @@ import {} from 'googlemaps';
 import { ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MapServiceService } from '../map-service.service';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {startWith, map} from 'rxjs/operators';
 
 
 
@@ -14,10 +17,12 @@ import { MapServiceService } from '../map-service.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
- 
- 
-  @ViewChild('map') mapElement: any;
-  map: google.maps.Map;
+
+  control = new FormControl();
+  filteredStreets: Observable<string[]>;
+   @ViewChild('map') mapElement: any;
+   map: google.maps.Map;
+  
 
   public valToSearch = {
     status: null,
@@ -58,9 +63,25 @@ export class HomeComponent implements OnInit {
   searchs:any;
   constructor(private Jarwis: JarwisService,private router: Router,private mapserver: MapServiceService) { }
 
+
   public lat;
   data: any;
+  newArr = [];
+
   ngOnInit() {
+    this.Jarwis.getalltitle().subscribe(data=>{
+      let y:any = data;
+      for(let x=0; x<y.length; x++){
+        let z = data[x].name_title;
+        let w = data[x].location;
+        if(!this.newArr.includes(z) || !this.newArr.includes(w)){
+          this.newArr.push(z);
+          this.newArr.push(w);
+        };
+
+        console.log(this.newArr)
+      }
+      })
       //map Init
       this.map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 6.9075, lng: 3.5813 },
@@ -157,6 +178,12 @@ export class HomeComponent implements OnInit {
         
       //   }
       // )
+
+      this.filteredStreets = this.control.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value))
+        
+      );
       
   }
 
@@ -203,6 +230,20 @@ export class HomeComponent implements OnInit {
   
       }
     })
+  }
+
+
+  streets: string[] = this.newArr ;
+  private _filter(value: string): string[] {
+    console.log(this.newArr)
+    
+    console.log(Array.isArray(this.streets));
+    const filterValue = this._normalizeValue(value);
+    return this.streets.filter(street => this._normalizeValue(street).includes(filterValue));
+  }
+
+  private _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
   }
 
   navigate(id){
