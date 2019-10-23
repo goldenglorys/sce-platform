@@ -1,0 +1,89 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+@Injectable(
+  {
+  providedIn: 'root'}
+)
+export class JarwisService {
+  private baseUrl = 'https://sabiogun.jtcheck.com/sce-ogun/backend/public/api';
+
+  constructor(private http: HttpClient) { }
+  roleuser() {
+    return this.http.get(`${this.baseUrl}/roleuser`)
+  }
+  signup(data) {
+    return this.http.post(`${this.baseUrl}/signup`, data)
+  }
+  role(data) {
+    return this.http.post(`${this.baseUrl}/role`, data)
+  }
+  activity(data) {
+    return this.http.post(`${this.baseUrl}/activity`, data)
+  }
+  cate(data) {
+    return this.http.post(`${this.baseUrl}/cate`, data)
+  }
+  
+  content(data) {
+    return this.http.post(`${this.baseUrl}/content`, data,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
+  }
+  
+  name_t(data) {
+    return this.http.post(`${this.baseUrl}/name_t`, data)
+  }
+  
+  login(data) {
+    return this.http.post(`${this.baseUrl}/login`, data)
+  }
+  getact() {
+    return this.http.get(`${this.baseUrl}/getact`,)
+  }
+  profile() {
+    return this.http.get(`${this.baseUrl}/me`,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
+  }
+  updateprofile(data) {
+    return this.http.post(`${this.baseUrl}/me`,data,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
+  }
+  post(id:string) {
+
+    return this.http.get(`${this.baseUrl}/post/${id}`,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
+
+  }
+  displayevent() {
+    return this.http.get(`${this.baseUrl}/displayevent`,)
+  }
+  displayartifact() {
+    return this.http.get(`${this.baseUrl}/displayartifact`,)
+  }
+  displaybusiness() {
+    return this.http.get(`${this.baseUrl}/displaybusiness`,)
+  }
+  displaypeople() {
+    return this.http.get(`${this.baseUrl}/displaypeople`,)
+  }
+  displaynews() {
+    return this.http.get(`${this.baseUrl}/displaynews`,)
+  }
+  displaylocation() {
+    return this.http.get(`${this.baseUrl}/displaylocation`,)
+  }
+
+  getcontent(id:string) {
+    return this.http.get(`${this.baseUrl}/getcontent/${id}`)
+  }
+  getalltitle() {
+    return this.http.get(`${this.baseUrl}/getalltitle`,)
+  }
+//  search(searchTerm:string) {
+//     return this.http.get(`${this.baseUrl}/getalltitle/${searchTerm}`)
+//   }
+
+}

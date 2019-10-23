@@ -1,0 +1,164 @@
+
+<!-- Wrapper -->
+<div class="wrapper">
+
+  <div class="navigation">
+      <div class="secondary-navigation">
+          <div class="container">
+              <div class="contact">                  
+                  <figure><strong>Phone:</strong>Your Location</figure>
+              </div>
+              <div class="user-area">
+                  <div class="actions">
+                      <!-- <a href="create-agency.html" class="promoted">Create Agency</a> -->
+                      <a [routerLink]="['/Signin']" class="promoted" *ngIf="!loggedIn"><strong>Register</strong></a>
+                      <a [routerLink]="['/Login']" *ngIf="!loggedIn">Sign In</a>
+                      <a href=""  [routerLink]="['/User', {outlets: {side: ['Details']}}]"  *ngIf="loggedIn">
+                        Account </a>
+                        <a href="" (click)="logout($event)"  routerLink="Register" *ngIf="loggedIn">
+                             Logout
+                              </a>
+                  </div>                
+              </div>
+          </div>
+      </div>
+      <div class="container">
+          <header class="navbar" id="top" role="banner">
+              <div class="navbar-header">
+                  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <div class="navbar-brand nav" id="brand">
+                        <a href="" ><img src="assets/img/logo.png" ></a>
+                      <!-- <a href="">{{ title }}</a> -->
+                  </div>
+              </div>
+              <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                  <ul class="nav navbar-nav">
+                      <li ><a [routerLink]="['/']">Homepage</a>
+                          
+                      </li>
+                      <li class="has-child"><a href="#">Category</a>
+                          <ul class="child-navigation">
+                              <li><a [routerLink]="['/Category']">History</a></li>
+                              <li><a [routerLink]="['/Category']">Event</a></li>
+                              <li><a [routerLink]="['/Category']">Places</a></li>
+                              <li><a [routerLink]="['/Category']">Turist</a></li>
+                              <li><a [routerLink]="['/Category']">News</a></li>
+                              <li><a [routerLink]="['/Category']">People</a></li>
+                              <li><a [routerLink]="['/Category']">Commercial</a></li>
+                          </ul>
+                      </li>                      
+                      <li><a [routerLink]="['/About']">About</a></li>
+                      <li><a [routerLink]="['/Contact']">Contact</a></li>
+                      <li><a [routerLink]="['/User', {outlets: {side: ['Details']}}]" >Submit</a></li>                  
+                      
+                  </ul>
+              </nav><!-- /.navbar collapse-->
+              <div class="add-your-property">
+                  <a href="submit.html" class="btn btn-default"><i class="fa fa-plus"></i><span class="text">Add Your Property</span></a>
+              </div>
+          </header><!-- /.navbar -->
+      </div><!-- /.container -->
+  </div><!-- /.navigation -->
+
+  <div class="container">
+      <div class="geo-location-wrapper">
+          <span class="btn geo-location"><i class="fa fa-map-marker"></i><span class="text">Find My Position</span></span>
+      </div>
+  </div>
+
+  <div >
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- Page Footer -->
+  <footer id="page-footer">
+      <div class="inner">
+          <aside id="footer-main">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-3 col-sm-3">
+                          <article>
+                              <h3>About Us</h3>
+                              <p>Vel fermentum ipsum. Suspendisse quis molestie odio. Interdum et malesuada fames ac ante ipsum
+                                  primis in faucibus. Quisque aliquet a metus in aliquet. Praesent ut turpis posuere, commodo odio
+                                  id, ornare tortor
+                              </p>
+                              <hr>
+                              <a href="#" class="link-arrow">Read More</a>
+                          </article>
+                      </div><!-- /.col-sm-3 -->
+                      <div class="col-md-3 col-sm-3">
+                          <article>
+                              <h3>Recent Properties</h3>
+                              <div class="property small">
+                                  <a href="property-detail.html">
+                                      <div class="property-image">
+                                          <img alt="" src="assets/img/properties/property-06.jpg">
+                                      </div>
+                                  </a>
+                                  <div class="info">
+                                      <a href="property-detail.html"><h4>2186 Rinehart Road</h4></a>
+                                      <figure>Doral, FL 33178 </figure>
+                                      <div class="tag price">$ 72,000</div>
+                                  </div>
+                              </div><!-- /.property -->
+                              <div class="property small">
+                                  <a href="property-detail.html">
+                                      <div class="property-image">
+                                          <img alt="" src="assets/img/properties/property-09.jpg">
+                                      </div>
+                                  </a>
+                                  <div class="info">
+                                      <a href="property-detail.html"><h4>2479 Murphy Court</h4></a>
+                                      <figure>Minneapolis, MN 55402</figure>
+                                      <div class="tag price">$ 36,000</div>
+                                  </div>
+                              </div><!-- /.property -->
+                          </article>
+                      </div><!-- /.col-sm-3 -->
+                      <div class="col-md-3 col-sm-3">
+                          <article>
+                              <h3>Contact</h3>
+                              <address>
+                                  <strong>Lead Resources</strong><br>
+                                  Elite Clube <br>
+                                  Idi Aba Abeokuta
+                              </address>
+                              +234 (080) 123-4567<br>
+                              <a href="#">info@leadreasources.com</a>
+                          </article>
+                      </div><!-- /.col-sm-3 -->
+                      <div class="col-md-3 col-sm-3">
+                          <article>
+                              <h3>Useful Links</h3>
+                              <ul class="list-unstyled list-links">
+                                  <li><a href="#">History</a></li>
+                                  <li><a href="#">Busineses</a></li>
+                                  <li><a href="#">Artifacts</a></li>
+                                  <li><a href="#">Places</a></li>
+                                  <li><a href="#">Terms and Conditions</a></li>
+                              </ul>
+                          </article>
+                      </div><!-- /.col-sm-3 -->
+                  </div><!-- /.row -->
+              </div><!-- /.container -->
+          </aside><!-- /#footer-main -->
+          <aside id="footer-thumbnails" class="footer-thumbnails"></aside><!-- /#footer-thumbnails -->
+          <aside id="footer-copyright">
+              <div class="container">
+                  <span>Copyright © 2019. All Rights Reserved.</span>
+                  <span class="pull-right"><a href="#page-top" class="roll">Go to top</a></span>
+              </div>
+          </aside>
+      </div><!-- /.inner -->
+  </footer>
+  <!-- end Page Footer -->
+</div>
+
+
+

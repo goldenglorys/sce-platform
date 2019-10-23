@@ -1,0 +1,56 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class UserController extends Controller
+{
+    public function getComments()
+    {
+        return DB::table("comment_tb")->get();
+    }
+    public function getRates()
+    {
+        return DB::table("rate_tb")->get();
+    }
+    public function getArticle()
+    {
+        $article = DB::table('titles')
+        ->select('titles.title_id','titles.name_title','titles.location','titles.t_image','titles.about','titles.views',
+        'titles.category_id','titles.user_id','contents.header','contents.content','contents.c_image', 'contents.list',
+        'categories.category_id','categories.catname', 'activities.activity_id','activities.actname')
+        ->join ('contents','titles.title_id','=','contents.title_id')
+        ->join ('categories','categories.category_id','=','titles.category_id')
+        ->join ('activities','activities.activity_id','=','categories.activity_id')
+        // ->join ('rate_tb','rate_tb.title_id','=','titles.title_id')
+        // ->join ('comment_tb','comment_tb.title_id','=','titles.title_id')
+        // ->orderBy('title_id','actname')
+        // ->take(100)
+        ->get();
+
+        if($article){
+            return $article;
+        } else {
+            return '{
+                "success":false,
+                "message":"Failed"
+            }';
+        }
+    }
+    public function getRatesforTitle()
+    {
+     $rate =DB::table('rate_tb')->select(DB::raw('AVG(rate) AS rate'), 'title_id' )->groupBy('title_id')->get();
+     return $rate;
+    }
+    public function getcommentforTitle()
+    {
+     $comment =DB::table('comment_tb')->select(DB::raw('count(comment) AS number_of_comment'), 'comment','title_id')->groupBy('title_id','comment')->get();
+     return $comment;
+    }
+    public function getAll()
+    {
+
+    }
+}
