@@ -17,6 +17,7 @@ export class ContentComponent implements OnInit {
   title:any;
   dates:any;
   about:any;
+  biography: any;
 
   constructor(private Jarwis: JarwisService,private router: Router,public actRoute: ActivatedRoute) { }
 
@@ -35,9 +36,10 @@ export class ContentComponent implements OnInit {
        this.dates=this.res.created_at;
        this.catname=this.res.catname;
        this.name=this.res.firstname+""+this.res.lastname+" "+this.res.middlename
+       this.biography=this.res.familybackground;
        console.log(this.res)
        this.contents=this.response.content
-       console.log(this.contents)
+       console.log(this.biography)
       
      this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
    //console.log(this.sdet);

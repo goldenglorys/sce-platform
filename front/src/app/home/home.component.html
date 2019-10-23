@@ -95,17 +95,17 @@
               <a [routerLink]="['/Category']" class="link-arrow">All Properties</a>
           </header>
           <div class="row">
-              <div class="col-md-3 col-sm-6" *ngFor="let r of resec" >
-                  <div class="property">
+              <div class="col-md-3 col-sm-6" *ngFor="let r of resec.slice().reverse() | slice:0:10; let i=index" >
+                  <div class="property" *ngIf="i<8">
                       <a  (click)="navigate(r.id)">
                           <div class="property-image">
-                              <img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{r.t_image}}">
+                              <img alt="" src="http://localhost/sce-platform/backend/public/upload/uploads/{{r.t_image}}">
                           </div>
                           <div class="overlay">
                               <div class="info">
                                   <div class="tag price" (click)="onClick()">{{r.catname}}</div>
-                                  <h3>{{r.name_title}}</h3>
-                                  <figure>{{r.about}}</figure>
+                                  <h3> {{r.name_title}}</h3>
+                                  <figure> {{r.about}}</figure>
                               </div>
                               <ul class="additional-info">
                                   <li>
@@ -141,11 +141,11 @@
             <a [routerLink]="['/Category']" class="link-arrow">All Properties</a>
         </header>
         <div class="row">
-            <div class="col-md-3 col-sm-6" *ngFor="let r of resac">
-                <div class="property">
+            <div class="col-md-3 col-sm-6" *ngFor="let r of resac.slice().reverse() | slice:0:10; let i=index" >
+                <div class="property" *ngIf="i<4">
                     <a (click)="navigate(r.id)">
                         <div class="property-image">
-                            <img alt="" src="https://sabiogun.jtcheck.com/backend/public/upload/uploads/{{r.t_image}}">
+                            <img alt="" src="http://localhost/sce-platform/public/upload/uploads/{{r.t_image}}">
                         </div>
                         <div class="overlay">
                             <div class="info">
@@ -188,12 +188,11 @@
           <a  [routerLink]="['/Category']" class="link-arrow">All Properties</a>
       </header>
       <div class="row">
-          <div class="col-md-3 col-sm-6" *ngFor="let r of resbc">
-
-              <div class="property">
+          <div class="col-md-3 col-sm-6" *ngFor="let r of resbc.slice().reverse() | slice:0:10; let i=index" >
+            <div class="property" *ngIf="i<4">
                   <a (click)="navigate(r.id)">
                       <div class="property-image">
-                          <img alt="" src="https://sabiogun.jtcheck.com/backend/upload/uploads/{{r.t_image}}">
+                          <img alt="" src="http://localhost/sce-platform/upload/uploads/{{r.t_image}}">
                       </div>
                       <div class="overlay">
                         <div class="info">
@@ -242,11 +241,11 @@
                 <a [routerLink]="['/Category']" class="link-arrow">All Properties</a>
             </header>
             <div class="row">
-                <div class="col-md-3 col-sm-6" *ngFor="let r of resnc">
-                    <div class="property">
+                <div class="col-md-3 col-sm-6" *ngFor="let r of resnc.slice().reverse() | slice:0:10; let i=index" >
+                    <div class="property" *ngIf="i<4">
                         <a (click)="navigate(r.id)">
                             <div class="property-image">
-                                <img alt="" src="https://sabiogun.jtcheck.com/backend/upload/uploads/{{r.t_image}}">
+                                <img alt="" src="http://localhost/sce-platform/upload/uploads/{{r.t_image}}">
                             </div>
                             <div class="overlay">
                                 <div class="info">

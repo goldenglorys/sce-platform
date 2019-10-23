@@ -67,7 +67,7 @@ export class SigninComponent implements OnInit {
     }
     handleResponse(data) {
       this.Token.handle(data.access_token);
-      this.router.navigateByUrl('/User/(side:Details)');
+      this.router.navigateByUrl('/User/(side:Profile)');
     }
   
     handleError(error) {

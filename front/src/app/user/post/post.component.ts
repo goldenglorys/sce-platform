@@ -51,16 +51,17 @@ contents:null,
   // console.log(this.items)
     this.Jarwis.content(this.form).subscribe(
       data => this.handleResponse(data),
-     error => this.handleError(error)
+    //  error => this.handleError(error)
    );
    
   }
-  handleError(error: any) {   
-    let snackBarRef = this.snackBar.open('Input error, check your input.', 'Dismiss', {
-      duration: 2000
-    })
-    
-  }
+
+  // if (error) {
+  //    let snackBarRef = this.snackBar.open('Input error, check your input.', 'Dismiss', {
+  //     duration: 2000
+  //   })
+  // }
+  
   handleResponse(data) {
     let snackBarRef = this.snackBar.open('Save Successfully', 'Dismiss', {
       duration: 2000
@@ -68,6 +69,7 @@ contents:null,
    // this.Token.handle(data.access_token);
     this.router.navigateByUrl('/User/(side:Details)');
   }
+
   getLength(): Number{
     return this.items.length
   }

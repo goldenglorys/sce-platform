@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class TokenService {
   private iss = {
-    login: 'https://sabiogun.jtcheck.com/sce-ogun/backend/public/api/login',
-    signup: 'https://sabiogun.jtcheck.com/sce-ogun/backend/public/api/signup'
+    login: 'http://localhost/sce-platform/backend/public/api/login',
+    signup: 'http://localhost/sce-platform/backend/public/api/signup'
   };
 
   constructor() { }

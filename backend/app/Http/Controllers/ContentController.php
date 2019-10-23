@@ -23,7 +23,7 @@ class ContentController extends Controller
         'name'=>title::orderBy('id')->join('categories','titles.category_id','=','Categories.id')
         ->join('activities','categories.activity_id','=','activities.id')
         ->join('Users','titles.user_id','=','Users.id')
-        ->select('titles.*','categories.catname','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename')
+        ->select('titles.*','categories.catname','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground')
        ->where('titles.id','=',$id)->get(),
        'content'=>content::orderBy('id')->join('titles','contents.name_id','=','titles.id')
         ->select('contents.*','titles.name_title','titles.location','titles.t_image','titles.about')

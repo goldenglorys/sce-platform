@@ -41,7 +41,6 @@ class DisplayController extends Controller
                 'subevent'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
                 ->select('titles.*','categories.catname','categories.destription','categories.activity_id')
                ->where('activity_id','=',6)
-               ->inRandomOrder()->take(4)
                 ->get()
             ]
         );
@@ -56,7 +55,6 @@ class DisplayController extends Controller
                 ->select('titles.*','categories.catname','categories.destription','categories.activity_id')
                ->where('activity_id','=',2)
                ->inRandomOrder()->take(4)
-               ->get()
             ]
         );
     }
@@ -69,7 +67,6 @@ class DisplayController extends Controller
                 'subevent'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
                 ->select('titles.*','categories.catname','categories.destription','categories.activity_id')
                ->where('activity_id','=',3)
-               ->inRandomOrder()->take(4)
                 ->get()
             ]
         );
@@ -82,7 +79,6 @@ class DisplayController extends Controller
                 'subevent'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
                 ->select('titles.*','categories.catname','categories.destription','categories.activity_id')
                ->where('activity_id','=',4)
-               ->inRandomOrder()->take(4)
               ->get()
             ]
         );
@@ -97,7 +93,6 @@ class DisplayController extends Controller
                 ->join('Users','titles.user_id','=','Users.id')
             ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename')
                ->where('activity_id','=',5)
-               ->inRandomOrder()->take(8)
                ->get()
             ]
         );
@@ -109,8 +104,7 @@ class DisplayController extends Controller
           
                 title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
                 ->join('Users','titles.user_id','=','Users.id')
-            ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename')
-            ->inRandomOrder()->take(4) 
+            ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename') 
                ->get()
         
         );
