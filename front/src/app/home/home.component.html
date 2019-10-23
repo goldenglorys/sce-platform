@@ -10,28 +10,14 @@
               <div class="row">
                   <div class="col-md-3 col-sm-4">
                       <div class="search-box map">
-                          <form role="form" (submit) = 'search()' id="form-map" class="form-map form-search">
-                              <h2>Search Your Property</h2>
-                              <div class="form-group">
-                                  <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)] = 'valToSearch.status' class="form-control" id="search-box-property-id" placeholder="Property ID">
-                              </div>
-                              <div>
-                                  <select (change)="cat($event)">
-                                      <option value="" >Status</option>
-                                      <option value="family" (click) = 'cat($event)'>Family</option>
-                                      <option value="location">Location</option>
-                                  </select>
-                              </div> 
-                              
-                              <div class="form-group">
-                                  <div class="price-range">
-                                      <input id="price-input" type="text" name="price" value="1000;299000">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <button type="submit" class="btn btn-default">Search Now</button>
-                              </div><!-- /.form-group -->
-                          </form><!-- /#form-map -->
+                        <form class="example-form">
+                            <input type="text" placeholder="Search for a street" [formControl]="control" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
+                                <a href="/Content/{{street}}"> {{street}} </a>
+                                </mat-option>
+                            </mat-autocomplete>
+                            </form>
                       </div><!-- /.search-box.map -->
                   </div><!-- /.col-md-3 -->
               </div><!-- /.row -->

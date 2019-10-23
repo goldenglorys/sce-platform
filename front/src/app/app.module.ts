@@ -25,6 +25,9 @@ import {MatSelectModule,MatInputModule, MatListModule, MatSnackBarModule,} from 
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete'​;
+import { MatFormFieldModule } from '@angular/material/form-field'​;
+
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { ContactComponent } from './contact/contact.component';
     MatSelectModule,
     MatInputModule,
     MatListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+
+    MatAutocompleteModule​,
+    MatFormFieldModule,
   
   ],
   providers: [JarwisService,TokenService,AuthService,BeforeLoginService,AfterLoginService],
