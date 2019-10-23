@@ -24,7 +24,7 @@ export class SigninComponent implements OnInit {
     firstname: null,
     lastname: null,
     middlename: null,
-    family: 'family',
+    family: null,
     familybackground: null,
     gender: 'Male',
     address: null,

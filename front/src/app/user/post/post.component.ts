@@ -51,9 +51,15 @@ contents:null,
   // console.log(this.items)
     this.Jarwis.content(this.form).subscribe(
       data => this.handleResponse(data),
-     //error => this.handleError(error)
+     error => this.handleError(error)
    );
    
+  }
+  handleError(error: any) {   
+    let snackBarRef = this.snackBar.open('Input error, check your input.', 'Dismiss', {
+      duration: 2000
+    })
+    
   }
   handleResponse(data) {
     let snackBarRef = this.snackBar.open('Save Successfully', 'Dismiss', {
@@ -92,20 +98,7 @@ contents:null,
       
     }
   }
-  // uploadFile(event){
-  //   let files =event.target.files[0];
-  //   let reader = new FileReader();
-  //   let vm = this;
-  //   reader.onloadend =()=> {
-      
-  //     this.image = reader.result;
-  //     this.orderForm.patchValue({
-  //       c_image:this.image
-  //     });
-    
-  //   }
-  //   reader.readAsDataURL(files);
-  // }
+  
   uploadFiles(event){
     let files =event.target.files[0];
     let reader = new FileReader();
