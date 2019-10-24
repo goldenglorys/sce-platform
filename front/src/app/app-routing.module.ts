@@ -31,7 +31,7 @@ const routes: Routes = [
      ],
         },
 
-  {path: 'Category', component: CategoryComponent},
+  {path: 'Category/:id', component: CategoryComponent},
   {path: 'Content/:id', component: ContentComponent },
   {path: 'addcat', component:  AddcategoryComponent },
   {path: 'About', component:  AboutComponent },

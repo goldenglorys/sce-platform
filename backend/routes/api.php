@@ -19,6 +19,8 @@ Route::group([
     Route::post('resetPassword', 'ChangePasswordController@process');
     
 });
+Route::get('gettitles/{id}','DisplayController@gettitles');
+Route::post('comment','CommentController@store');
 Route::post('me','AuthController@updateprofile');
 Route::get('roleuser', 'RoleController@roleuser');
 Route::post('role','RoleController@store');

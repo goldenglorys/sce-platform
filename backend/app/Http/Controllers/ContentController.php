@@ -8,6 +8,7 @@ use App\ Category;
 use App\title;
 use Image;
 use App\User;
+use App\comment_tbs;
 class ContentController extends Controller
 {
     /**
@@ -25,8 +26,13 @@ class ContentController extends Controller
         ->join('users','titles.user_id','=','users.id')
         ->select('titles.*','categories.catname','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground')
        ->where('titles.id','=',$id)->get(),
+       'comment'=>comment_tbs::orderBy('id')->join('titles','comment_tbs.title_id','=','titles.id')
+       ->join('users','comment_tbs.user_id','=','users.id')
+        ->select('comment_tbs.*','titles.name_title','titles.location','titles.t_image','users.firstname','users.lastname','users.middlename','users.image','users.email')
+       ->where('title_id','=',$id)
+       ->get(),
        'content'=>content::orderBy('id')->join('titles','contents.name_id','=','titles.id')
-        ->select('contents.*','titles.name_title','titles.location','titles.t_image','titles.about')
+        ->select('contents.*','titles.name_title','titles.location','titles.t_image')
        ->where('name_id','=',$id)
        
        ->get()

@@ -126,4 +126,17 @@ class DisplayController extends Controller
         );
     }
 
+    public function gettitles($id)
+    {
+        return response()->json(
+          
+                title::orderBy('id')->join('categories','titles.category_id','=','Categories.id')
+                ->join('users','titles.user_id','=','users.id')
+            ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename')
+            ->where('activity_id','=',$id)
+            // ->inRandomOrder()->take(4) 
+               ->get()
+        
+        );
+    }
 }
