@@ -20,9 +20,9 @@ class ContentController extends Controller
         return response()->json(
             // Activities::where('id','=',1)->get(),
             [
-        'name'=>title::orderBy('id')->join('categories','titles.category_id','=','Categories.id')
+        'name'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
         ->join('activities','categories.activity_id','=','activities.id')
-        ->join('Users','titles.user_id','=','Users.id')
+        ->join('users','titles.user_id','=','users.id')
         ->select('titles.*','categories.catname','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground')
        ->where('titles.id','=',$id)->get(),
        'content'=>content::orderBy('id')->join('titles','contents.name_id','=','titles.id')

@@ -34,7 +34,7 @@ export class SigninComponent implements OnInit {
     password_confirmation: null,
     role_id:null
   };
- 
+  disabled= false;
   public error: any;
   public gender;
   response: Object;
@@ -62,15 +62,20 @@ export class SigninComponent implements OnInit {
       this.Jarwis.signup(this.form).subscribe(
         // data =>console.log(data),
         data => this.handleResponse(data),
-        error => this.handleError(error),         
+        error => this.handleError(error), 
+             
       );
+      this.disabled=true;  
     }
     handleResponse(data) {
+      this.disabled=true; 
       this.Token.handle(data.access_token);
       this.router.navigateByUrl('/User/(side:Profile)');
+      this.disabled=false; 
     }
   
     handleError(error) {
+      this.disabled=false; 
       this.error = error.error.errors;
       console.log(this.error);
     }

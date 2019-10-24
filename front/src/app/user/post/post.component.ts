@@ -26,6 +26,7 @@ about: 'Content',
 t_image:null,
 contents:null,
 }
+  disabled=false;
   id: any;
   data: any;
   // orderForm: FormGroup;
@@ -46,14 +47,15 @@ contents:null,
   }
  
   onSubmit() {
-    this.form.contents=this.items
-  console.log(this.form)
-  // console.log(this.items)
+    this.form.contents=this.items  
     this.Jarwis.content(this.form).subscribe(
       data => this.handleResponse(data),
-    //  error => this.handleError(error)
+        error => this.handleError(error)
    );
-   
+   this.disabled=true;
+  }
+  handleError(error: any): void {
+    this.disabled=false;
   }
 
   // if (error) {
@@ -62,11 +64,12 @@ contents:null,
   //   })
   // }
   
-  handleResponse(data) {
+  handleResponse(data) {    
     let snackBarRef = this.snackBar.open('Save Successfully', 'Dismiss', {
       duration: 2000
     })
    // this.Token.handle(data.access_token);
+   this.disabled=true;
     this.router.navigateByUrl('/User/(side:Details)');
   }
 

@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit {
         this.actname=this.reseh.actname
         //this is all subcat under event category
         this.resec=this.rese.subevent
-         console.log(this.resec)
+        //  console.log(this.resec)
         
         }
       )
@@ -114,8 +114,8 @@ export class HomeComponent implements OnInit {
         this.resa = data;  
         this.resah=this.resa.event[0]
         this.actname1=this.resah.actname
-        this.resac=this.resa.subevent
-         console.log(this.resa)
+        this.resac=this.resa.arti_cat
+        //  console.log(this.resa)
 
         
         }
@@ -126,7 +126,7 @@ export class HomeComponent implements OnInit {
         this.resbh=this.resb.event[0]
         this.actname2=this.resbh.actname
         this.resbc=this.resb.subevent 
-        console.log(this.resbc)
+        console.log(this.resb)
 
         
         }
@@ -147,7 +147,7 @@ export class HomeComponent implements OnInit {
         this.resnh=this.resn.event[0]
         this.actname4=this.resnh.actname
         this.resnc=this.resn.subevent 
-        console.log(this.resnc)
+        console.log(this.resn)
         
         }
       )

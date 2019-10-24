@@ -82,13 +82,13 @@
           <div class="row">
               <div class="col-md-3 col-sm-6" *ngFor="let r of resec" >
                   <div class="property">
-                      <a  (click)="navigate(r.id)">
+                      <a [routerLink]="['/Content', r.id]">
                           <div class="property-image">
                               <img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{r.t_image}}">
                           </div>
                           <div class="overlay">
                               <div class="info">
-                                  <div class="tag price" (click)="onClick()">{{r.catname}}</div>
+                                  <div class="tag price">{{r.catname}}</div>
                                   <h3>{{r.name_title}}</h3>
                                   <figure>{{r.about}}</figure>
                               </div>
@@ -130,7 +130,7 @@
                 <div class="property">
                     <a (click)="navigate(r.id)">
                         <div class="property-image">
-                            <img alt="" src="https://sabiogun.jtcheck.com/backend/public/upload/uploads/{{r.t_image}}">
+                            <img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{r.t_image}}">
                         </div>
                         <div class="overlay">
                             <div class="info">
@@ -178,7 +178,7 @@
               <div class="property">
                   <a (click)="navigate(r.id)">
                       <div class="property-image">
-                          <img alt="" src="https://sabiogun.jtcheck.com/backend/upload/uploads/{{r.t_image}}">
+                          <img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{r.t_image}}">
                       </div>
                       <div class="overlay">
                         <div class="info">
@@ -231,7 +231,7 @@
                     <div class="property">
                         <a (click)="navigate(r.id)">
                             <div class="property-image">
-                                <img alt="" src="https://sabiogun.jtcheck.com/backend/upload/uploads/{{r.t_image}}">
+                                <img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{r.t_image}}">
                             </div>
                             <div class="overlay">
                                 <div class="info">
@@ -258,35 +258,44 @@
             </div><!-- /.row-->
         </div><!-- /.container-->
     </section><!-- /#new-properties-->
-    <section id="testimonials" class="block">
+    <section id="new-properties" class="block">
         <div class="container">
-            <header class="section-title"><h2>People</h2></header>
-            <div class="owl-carousel testimonials-carousel">
-                <blockquote class="testimonial">
-                    <figure>
-                        <div class="image">
-                            <img alt="" src="assets/img/client-01.jpg">
-                        </div>
-                    </figure>
-                    <aside class="cite">
-                        <p>Fusce risus metus, placerat in consectetur eu, porttitor a est sed sed dolor lorem cras adipiscing</p>
-                        <footer>Natalie Jenkins</footer>
-                    </aside>
-                </blockquote>
-                <blockquote class="testimonial">
-                    <figure>
-                        <div class="image">
-                            <img alt="" src="assets/img/client-01.jpg">
-                        </div>
-                    </figure>
-                    <aside class="cite">
-                        <p>Fusce risus metus, placerat in consectetur eu, porttitor a est sed sed dolor lorem cras adipiscing</p>
-                        <footer>Natalie Jenkins</footer>
-                    </aside>
-                </blockquote>
-            </div><!-- /.testimonials-carousel -->
-        </div><!-- /.container -->
-    </section><!-- /#testimonials -->
+            <header class="section-title">
+                <h2>{{actname5}}</h2>
+                <a [routerLink]="['/Category']" class="link-arrow">All Properties</a>
+            </header>
+            <div class="row">
+                <div class="col-md-3 col-sm-6" *ngFor="let r of respc">
+                    <div class="property">
+                        <a (click)="navigate(r.id)">
+                            <div class="property-image">
+                                <img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{r.t_image}}">
+                            </div>
+                            <div class="overlay">
+                                <div class="info">
+                                    <div class="tag price" (click)="onClick()">{{r.catname}}</div>
+                                    <h3>{{r.name_title}}</h3>
+                                    <figure>{{r.about}}</figure>
+                                </div>
+                                <ul class="additional-info">
+                                    <li>
+                                        <header>View:</header>
+                                        <figure>{{r.view}}<sup>2</sup></figure>
+                                    </li>
+                                    <li>
+                                        <header>Comment:</header>
+                                        <figure>23</figure>
+                                    </li>
+                                </ul>
+                            </div>
+                        </a>
+                    </div><!-- /.property -->
+                </div><!-- /.col-md-3 -->  
+               
+               
+            </div><!-- /.row-->
+        </div><!-- /.container-->
+    </section><!-- /#new-properties-->
     <section id="partners" class="block">
         <div class="container">
             <header class="section-title"><h2>Our Partners</h2></header>

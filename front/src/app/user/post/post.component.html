@@ -43,7 +43,7 @@
                                                         <div class="form-group">
                                                             <label for="submit-location">Location</label>
                                                             <mat-form-field class="example-full-width">
-                                                                <input matInput  placeholder="Name Of Location" [(ngModel)]="form.location" name="location">
+                                                                <input matInput  placeholder="Name Of Location" [(ngModel)]="form.location" name="location" required>
                                                               </mat-form-field>
                                                               <br>{{location}}
                                                         </div>                                                      
@@ -64,7 +64,7 @@
                                                         <div class="form-group">
                                                             <label for="submit-property-type">Name or Title</label>
                                                             <mat-form-field class="example-full-width">
-                                                                <input matInput  placeholder="Name / Tittle" [(ngModel)]="form.name_title" name="name_title">
+                                                                <input matInput  placeholder="Name / Tittle" [(ngModel)]="form.name_title" name="name_title" required>
                                                               </mat-form-field>
                                                         </div><!-- /.form-group -->
                                                     </div><!-- /.col-md-6 -->
@@ -73,34 +73,12 @@
                                                                 <label for="submit-area">Insert Image</label>
                                                                 <div class="input-group">
                                                                     <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" (change)="uploadFiles($event)">
-                                                                    <span class="input-group-addon">m<sup>2</sup></span>
+                                                                    <!-- <span class="input-group-addon">m<sup>2</sup></span> -->
                                                                 </div>
                                                             </div><!-- /.form-group -->
                                                         </div><!-- /.col-md-6 -->  
                                                     
-                                                </div><!-- /.row --><hr>
-                                                <!-- <div class="row">
-                                                    <div class="col-md-12 col-sm-12">
-                                                        <div class="form-group">
-                                                            <label for="submit-status">About</label>
-                                                            <mat-form-field class="example-full-width">
-                                                                <textarea matInput  placeholder="About" [(ngModel)]="form.about" name="about"></textarea>
-                                                              </mat-form-field>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div> -->
-                                                <!-- <div class="row">
-                                                    <div class="col-md-6 col-sm-6">
-                                                        <div class="form-group">
-                                                            <label for="submit-area">Insert Image</label>
-                                                            <div class="input-group">
-                                                                <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images" (change)="uploadFiles($event)">
-                                                                <span class="input-group-addon">m<sup>2</sup></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>                                               
-                                                </div> -->
+                                                </div><!-- /.row --><hr>                                               
 
                                         <div *ngIf="getLength()">
                                         <div [formGroup]="orderForm" >
@@ -145,7 +123,7 @@
                                                     <mat-form-field class="example-full-width">
                                                         <label for="submit-description">Content</label>
                                                     
-                                                        <textarea matInput formControlName="content"></textarea>
+                                                        <textarea matInput formControlName="content"  rows="8"></textarea>
                                                     </mat-form-field>                                            
 
                                               </div>
@@ -165,7 +143,7 @@
                                 <div class="center">
                                     
                                         <div class="form-group center">
-                                            <button type="submit" (click)="onSubmit()" class="btn btn-default large" id="account-submit">Create Agency</button>
+                                            <button type="submit" (click)="onSubmit()" [disabled]= "disabled" class="btn btn-default large" id="account-submit">Create Submit</button>
                                         </div><!-- /.form-group -->                                   
                                    
                                     <figure class="note block">By clicking the “Proceed to Payment” or “Submit” button you agree with our <a href="terms-conditions.html">Terms and conditions</a></figure>
@@ -178,24 +156,3 @@
                 </div>
 
                 </div>
-
-
-
-
-                <!-- <div>
-                        <form [formGroup]="orderForm">
-                          <input formControlName="name" placeholder="Item name">
-                          <input formControlName="description" placeholder="Item description">
-                          <input formControlName="price" placeholder="Item price">
-                        
-                                <mat-form-field class="example-full-width">
-                                  <input matInput formControlName="name" placeholder="Favorite food" value="Sushi">
-                                </mat-form-field>
-                              
-                                <mat-form-field class="example-full-width">
-                                  <textarea matInput placeholder="Leave a comment"></textarea>
-                                </mat-form-field>
-                             
-                        </form>
-                      <button (click)="addItem()">add</button>
-                      </div> -->

@@ -53,7 +53,7 @@ public role;
    
     this.Auth.changeAuthStatus(true);
   
-   this.router.navigateByUrl('/User/(side:Details)');
+   this.router.navigateByUrl('/User/(side:Profile)');
   }
 
   handleError(error) {

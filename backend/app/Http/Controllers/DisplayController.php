@@ -24,9 +24,10 @@ class DisplayController extends Controller
             [
 
                 'event' =>Activities::where('id','=',1)->get(),
-                'subevent'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
+                'subevent'=>title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
                 ->select('titles.*','categories.catname','categories.destription','categories.activity_id')
                ->where('activity_id','=',1)
+               ->inRandomOrder()->limit(8)
                 ->get()
             ]
         );
@@ -38,9 +39,10 @@ class DisplayController extends Controller
             
             [
                 'event' =>Activities::where('id','=',6)->get(),
-                'subevent'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
+                'subevent'=>title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
                 ->select('titles.*','categories.catname','categories.destription','categories.activity_id')
                ->where('activity_id','=',6)
+               ->inRandomOrder()->limit(8)
                 ->get()
             ]
         );
@@ -51,10 +53,11 @@ class DisplayController extends Controller
             [
 
                 'event' =>Activities::where('id','=',2)->get(),
-                'subevent'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
+                'arti_cat'=>title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
                 ->select('titles.*','categories.catname','categories.destription','categories.activity_id')
                ->where('activity_id','=',2)
-               ->inRandomOrder()->take(4)
+               ->inRandomOrder()->limit(8)
+               ->get()
             ]
         );
     }
@@ -64,9 +67,10 @@ class DisplayController extends Controller
             [
 
                 'event' =>Activities::where('id','=',3)->get(),
-                'subevent'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
+                'subevent'=>title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
                 ->select('titles.*','categories.catname','categories.destription','categories.activity_id')
                ->where('activity_id','=',3)
+               ->inRandomOrder()->limit(8)
                 ->get()
             ]
         );
@@ -76,9 +80,10 @@ class DisplayController extends Controller
         return response()->json(
             [
                 'event' =>Activities::where('id','=',4)->get(),
-                'subevent'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
+                'subevent'=>title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
                 ->select('titles.*','categories.catname','categories.destription','categories.activity_id')
                ->where('activity_id','=',4)
+               ->inRandomOrder()->limit(8)
               ->get()
             ]
         );
@@ -89,10 +94,11 @@ class DisplayController extends Controller
             [
 
                 'event' =>Activities::where('id','=',5)->get(),
-                'subevent'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
-                ->join('Users','titles.user_id','=','Users.id')
+                'subevent'=>title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
+                ->join('users','titles.user_id','=','users.id')
             ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename')
-               ->where('activity_id','=',5)
+              ->where('activity_id','=',5)
+              ->inRandomOrder()->limit(8)
                ->get()
             ]
         );
@@ -103,7 +109,7 @@ class DisplayController extends Controller
         return response()->json(
           
                 title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
-                ->join('Users','titles.user_id','=','Users.id')
+                ->join('users','titles.user_id','=','users.id')
             ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename') 
                ->get()
         
