@@ -25,7 +25,15 @@ export class AppComponent {
   public res:any;
   ngOnInit() {
     this.Auth.authStatus.subscribe(value => this.loggedIn = value);
-    
+    this.Jarwis.getact().subscribe(
+      data=>{
+      // console.log(data);
+      this.res = data;  
+      // this.roleid=this.res[0]
+      console.log(this.res)
+      }
+    )
+
   }
   
 
@@ -35,6 +43,8 @@ export class AppComponent {
     this.Auth.changeAuthStatus(false);
     this.router.navigateByUrl('');
   }
-
+  navigate(id){
+    this.router.navigate(['Category/'+id+''])
+  }
 
 }

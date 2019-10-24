@@ -43,13 +43,14 @@
                       </li>
                       <li class="has-child"><a href="#">Category</a>
                           <ul class="child-navigation">
-                              <li><a [routerLink]="['/Category']">History</a></li>
+                                <li *ngFor="let r of res"><a (click)="navigate(r.id)">{{r.actname}}</a></li>
+                              <!-- <li><a [routerLink]="['/Category']">History</a></li>
                               <li><a [routerLink]="['/Category']">Event</a></li>
                               <li><a [routerLink]="['/Category']">Places</a></li>
                               <li><a [routerLink]="['/Category']">Turist</a></li>
                               <li><a [routerLink]="['/Category']">News</a></li>
                               <li><a [routerLink]="['/Category']">People</a></li>
-                              <li><a [routerLink]="['/Category']">Commercial</a></li>
+                              <li><a [routerLink]="['/Category']">Commercial</a></li> -->
                           </ul>
                       </li>                      
                       <li><a [routerLink]="['/About']">About</a></li>

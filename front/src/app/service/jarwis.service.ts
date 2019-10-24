@@ -82,8 +82,16 @@ export class JarwisService {
   getalltitle() {
     return this.http.get(`${this.baseUrl}/getalltitle`,)
   }
+  gettitles(id:string) {
+    return this.http.get(`${this.baseUrl}/gettitles/${id}`)
+  }
 //  search(searchTerm:string) {
 //     return this.http.get(`${this.baseUrl}/getalltitle/${searchTerm}`)
 //   }
 
+comment(data) {
+  return this.http.post(`${this.baseUrl}/comment`, data,{headers:{
+    Authorization:`Bearer ${localStorage.token}`
+  }})
+}
 }

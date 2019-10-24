@@ -61,6 +61,12 @@ export class HomeComponent implements OnInit {
   title: any;
   searchdata: any;
   searchs:any;
+  id: any;
+  id1: any;
+  id2: any;
+  id3: any;
+  id4: any;
+  id5: any;
   constructor(private Jarwis: JarwisService,private router: Router,private mapserver: MapServiceService) { }
 
 
@@ -102,6 +108,7 @@ export class HomeComponent implements OnInit {
         //this is one category which is event
         this.reseh=this.rese.event[0]
         this.actname=this.reseh.actname
+        this.id=this.reseh.id
         //this is all subcat under event category
         this.resec=this.rese.subevent
         //  console.log(this.resec)
@@ -114,6 +121,7 @@ export class HomeComponent implements OnInit {
         this.resa = data;  
         this.resah=this.resa.event[0]
         this.actname1=this.resah.actname
+        this.id1=this.resah.id
         this.resac=this.resa.arti_cat
         //  console.log(this.resa)
 
@@ -125,8 +133,9 @@ export class HomeComponent implements OnInit {
         this.resb = data; 
         this.resbh=this.resb.event[0]
         this.actname2=this.resbh.actname
+        this.id2=this.resbh.id
         this.resbc=this.resb.subevent 
-        console.log(this.resb)
+        // console.log(this.resb)
 
         
         }
@@ -136,8 +145,9 @@ export class HomeComponent implements OnInit {
         this.resl = data;  
         this.reslh=this.resb.event[0]
         this.actname3=this.reslh.actname
+        this.id3=this.reslh.id
         this.reslc=this.resl.subevent 
-       console.log(this.reslc)
+      //  console.log(this.reslc)
         
         }
       )
@@ -146,8 +156,9 @@ export class HomeComponent implements OnInit {
         this.resn= data;  
         this.resnh=this.resn.event[0]
         this.actname4=this.resnh.actname
+        this.id4=this.resnh.id
         this.resnc=this.resn.subevent 
-        console.log(this.resn)
+        // console.log(this.resn)
         
         }
       )
@@ -156,8 +167,9 @@ export class HomeComponent implements OnInit {
         this.resp = data;  
         this.resph=this.resp.event[0]
         this.actname5=this.resph.actname
+        this.id5=this.resph.id
         this.respc=this.resp.subevent 
-         console.log(this.respc)
+        //  console.log(this.respc)
         
         }
       )
@@ -165,7 +177,7 @@ export class HomeComponent implements OnInit {
         data=>{
         this.title = data;  
         
-        console.log(this.title)
+        // console.log(this.title)
         
         }
       )
@@ -245,7 +257,10 @@ export class HomeComponent implements OnInit {
   private _normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
   }
-
+  navigat(id){
+    // console.log(id)
+   this.router.navigate(['Category/'+id+''])
+  }
   navigate(id){
     this.router.navigate(['Content/'+id+''])
   }

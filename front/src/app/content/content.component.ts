@@ -5,7 +5,7 @@ import {map} from 'rxjs/operators';
 import {} from 'googlemaps';
 import { ViewChild } from '@angular/core';
 import { MapServiceService } from '../map-service.service';
-
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -24,10 +24,48 @@ public data;
 map: google.maps.Map;
 id: any;
   bio: any;
-
-constructor(private Jarwis: JarwisService,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService) { }
+  public form = {
+    comment: null,
+    title_id: null,
+   
+  };
+  comment: any;
+constructor(private Jarwis: JarwisService,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService) { }
 @ViewChild('map') mapElement: any;
 
+
+
+onSubmit() {
+  let token=localStorage.getItem('token')
+//  alert(token)
+  if (token==null){
+    let snackBarRef = this.snackBar.open('Please, Login to proceed', 'Dismiss', {
+      duration: 4000
+    })
+  this.router.navigateByUrl('/Login');
+  }
+  else{
+   
+    console.log(this.form)
+     this.Jarwis.comment(this.form).subscribe(
+    // data =>console.log(data),
+    data => this.handleResponse(data),
+    error => this.handleError(error)
+  );
+  }
+ 
+ 
+}
+handleResponse(data) {
+  let snackBarRef = this.snackBar.open('Comment Successfully', 'Dismiss', {
+    duration: 2000
+  })
+  
+}
+
+handleError(error) {
+  // this.error = error.error.errors;
+}
   ngOnInit() {
 
     this.actRoute.paramMap.subscribe((params => {  
@@ -55,10 +93,12 @@ constructor(private Jarwis: JarwisService,private router: Router, public actRout
                     this.res=this.response.name[0];
                     this.actname=this.res.actname;
                     this.catname=this.res.catname;
+                    this.form.title_id=this.res.id;
                     this.bio=this.res.familybackground;
                     this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
                     // console.log(this.response.content[0].location)
                     this.contents=this.response.content
+                    this.comment=this.response.comment
                     // console.log(this.contents);
                     
                     //map Init
@@ -99,11 +139,12 @@ constructor(private Jarwis: JarwisService,private router: Router, public actRout
                   this.actname=this.res.actname;
                   this.catname=this.res.catname;
                   this.bio=this.res.familybackground;
+                  this.form.title_id=this.res.id;
                   this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
                   console.log(this.response.content[0].location)
                   this.contents=this.response.content
                   console.log(this.contents);
-                  
+                  this.comment=this.response.comment
                   //map Init
                   this.coordGet.getLocality(this.response.content[0].location).subscribe(data=>{
                     this.data = data;
