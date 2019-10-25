@@ -35,6 +35,7 @@ id: any;
   dates: any;
   about: any;
   uimage: any;
+  marker: google.maps.Marker;
 constructor(private Jarwis: JarwisService,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService) { }
 @ViewChild('map') mapElement: any;
 
@@ -119,9 +120,9 @@ handleError(error) {
                       let long = this.data.results[0].geometry.location.lng;
                       console.log('lat= '+ lat +' and long= '+ long );
 
-                      this.map = new google.maps.Map(document.getElementById('map'), {
+                      var map = new google.maps.Map(document.getElementById('map'), {
                         center: {lat: lat, lng:  long},
-                        zoom: 10,
+                        zoom: 12,
                         panControl: true,
                         mapTypeControl: false,
                         scaleControl: true,
@@ -130,7 +131,14 @@ handleError(error) {
                         rotateControl: true,
                         //mapTypeId: google.maps.mapTypeId.ROADMAP
                       })
-                  })
+                      this.marker = new google.maps.Marker({
+                        map: map,
+                        draggable: true,
+                        animation: google.maps.Animation.DROP,
+                        position: {lat: lat, lng:  long},
+                        
+                      });
+                    })
                     
                     this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
                     this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
@@ -167,9 +175,9 @@ handleError(error) {
                     let long = this.data.results[0].geometry.location.lng;
                     console.log('lat= '+ lat +' and long= '+ long );
       
-                    this.map = new google.maps.Map(document.getElementById('map'), {
+                    var map = new google.maps.Map(document.getElementById('map'), {
                       center: {lat: lat, lng:  long},
-                      zoom: 10,
+                      zoom: 12,
                       panControl: true,
                       mapTypeControl: false,
                       scaleControl: true,
@@ -178,6 +186,13 @@ handleError(error) {
                       rotateControl: true,
                       //mapTypeId: google.maps.mapTypeId.ROADMAP
                     })
+                    this.marker = new google.maps.Marker({
+                      map: map,
+                      draggable: true,
+                      animation: google.maps.Animation.DROP,
+                      position: {lat: lat, lng:  long},
+                      
+                    });
                 })
                   
                   this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
