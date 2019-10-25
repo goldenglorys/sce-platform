@@ -56,12 +56,11 @@ export class SigninComponent implements OnInit {
       {value: 'Ota', viewValue: 'Ota'}
     ];
     onSubmit() {
-      // this.form.town='Abeokuta'
-      // this.form.gender="Miss"
+     
       this.form.role_id=1
-      console.log(this.form)
+   
       this.Jarwis.signup(this.form).subscribe(
-        // data =>console.log(data),
+       
         data => this.handleResponse(data),
         error => this.handleError(error), 
              
@@ -72,6 +71,7 @@ export class SigninComponent implements OnInit {
       this.disabled=true; 
       this.Token.handle(data.access_token);
       this.router.navigateByUrl('/User/(side:Profile)');
+      this.ngOnInit();
       this.disabled=false; 
     }
   
@@ -83,21 +83,16 @@ export class SigninComponent implements OnInit {
     displayroleuser(){
       this.Jarwis.roleuser().subscribe(
         data=>{
-        // console.log(data);
+       
         this.res = data;
         
         this.roleid=this.res[0]
-        console.log(this.roleid.id)
+       
         }
       )
     }    
  
   ngOnInit() {   
-    
-  // this.options = [
-  //   { name: "option1", value: 1 },
-  //   { name: "option2", value: 2 }
-  // ] 
     this.displayroleuser()
     
   

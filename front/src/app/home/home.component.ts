@@ -85,10 +85,11 @@ export class HomeComponent implements OnInit {
           this.newArr.push(w);
         };
 
-        // console.log(this.newArr)
+       
       }
       })
-      //map Init
+    
+      
       this.map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 6.9075, lng: 3.5813 },
         zoom: 10,
@@ -111,7 +112,7 @@ export class HomeComponent implements OnInit {
         this.id=this.reseh.id
         //this is all subcat under event category
         this.resec=this.rese.subevent
-        //  console.log(this.resec)
+      
         
         }
       )
@@ -123,8 +124,8 @@ export class HomeComponent implements OnInit {
         this.actname1=this.resah.actname
         this.id1=this.resah.id
         this.resac=this.resa.arti_cat
-        //  console.log(this.resa)
-
+       
+        
         
         }
       )
@@ -135,7 +136,7 @@ export class HomeComponent implements OnInit {
         this.actname2=this.resbh.actname
         this.id2=this.resbh.id
         this.resbc=this.resb.subevent 
-        // console.log(this.resb)
+    
 
         
         }
@@ -147,7 +148,7 @@ export class HomeComponent implements OnInit {
         this.actname3=this.reslh.actname
         this.id3=this.reslh.id
         this.reslc=this.resl.subevent 
-      //  console.log(this.reslc)
+     
         
         }
       )
@@ -158,7 +159,7 @@ export class HomeComponent implements OnInit {
         this.actname4=this.resnh.actname
         this.id4=this.resnh.id
         this.resnc=this.resn.subevent 
-        // console.log(this.resn)
+       
         
         }
       )
@@ -169,7 +170,8 @@ export class HomeComponent implements OnInit {
         this.actname5=this.resph.actname
         this.id5=this.resph.id
         this.respc=this.resp.subevent 
-         console.log(this.respc)
+       
+        
         
         }
       )
@@ -177,20 +179,15 @@ export class HomeComponent implements OnInit {
         data=>{
         this.title = data;  
         
-        // console.log(this.title)
+       
+        
         
         }
       )
-      // this.search='iw'
-      // this.Jarwis.search(this.search).subscribe(
-      //   data=>{
-      //   this.searchdata= data;  
-        
-      //   console.log(this.searchdata)
-        
-      //   }
-      // )
-
+     
+      
+   
+      
       this.filteredStreets = this.control.valueChanges.pipe(
         startWith(''),
         map(value => this._filter(value))
@@ -247,7 +244,8 @@ export class HomeComponent implements OnInit {
 
   streets: string[] = this.newArr ;
   private _filter(value: string): string[] {
-    console.log(this.newArr)
+   
+    
     
     console.log(Array.isArray(this.streets));
     const filterValue = this._normalizeValue(value);

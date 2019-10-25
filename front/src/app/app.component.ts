@@ -13,9 +13,8 @@ export class AppComponent {
  
   public loggedIn: boolean;
   footer: any;
-// public alerts: Array<Alert>=[];
+  image: any;
 
-// message="";
   constructor(
     private Auth: AuthService,
     private router: Router,
@@ -29,10 +28,9 @@ export class AppComponent {
     this.Auth.authStatus.subscribe(value => this.loggedIn = value);
     this.Jarwis.getact().subscribe(
       data=>{
-      // console.log(data);
+      
       this.res = data;  
-      // this.roleid=this.res[0]
-      console.log(this.res)
+      
       }
     )
 
@@ -41,10 +39,18 @@ export class AppComponent {
       this.ftitle = data; 
       this.footer=this.ftitle[0] 
       
-      console.log(this.footer)
+     
       
       }
     )
+
+    this.Jarwis.profile().subscribe(
+      data=>{
+      
+      this.response = data;
+      this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.response.image
+     
+    })
 
   }
   

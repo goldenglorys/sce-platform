@@ -8,8 +8,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./mypost.component.css']
 })
 export class MypostComponent implements OnInit {
-  // dynamicArray: Array<DynamicGrid> = [];  
-  // newDynamic: any = {};  
+ 
 
 
   constructor(public snackBar: MatSnackBar, private formBuilder: FormBuilder) { }
@@ -22,6 +21,3 @@ export class MypostComponent implements OnInit {
 
   
 }
-// this.newDynamic = {title1: "", title2: "",title3:""};  
-// this​.dynamicArray.push(​this​.newDynamic);  
-// console.log(this.dynamicArray)
