@@ -42,7 +42,7 @@ constructor(private Jarwis: JarwisService,public snackBar: MatSnackBar,private r
 
 onSubmit() {
   let token=localStorage.getItem('token')
-//  alert(token)
+
   if (token==null){
     let snackBarRef = this.snackBar.open('Please, Login to proceed', 'Dismiss', {
       duration: 4000
@@ -51,9 +51,10 @@ onSubmit() {
   }
   else{
    
-    console.log(this.form)
+   
+    
      this.Jarwis.comment(this.form).subscribe(
-    // data =>console.log(data),
+    
     data => this.handleResponse(data),
     error => this.handleError(error)
   );
@@ -64,8 +65,8 @@ onSubmit() {
 handleResponse(data) {
   let snackBarRef = this.snackBar.open('Comment Successfully', 'Dismiss', {
     duration: 2000
-  })
-  
+  });
+  this.ngOnInit()
 }
 
 handleError(error) {
@@ -79,11 +80,10 @@ handleError(error) {
       // id = data[x].id;
      
       
-      // console.log(id)
+   
 
       if(typeof params.get('id') == 'string') { 
         
-        console.log(id)
         
         this.Jarwis.getalltitle().subscribe(data=>{
             for(let x in data){
@@ -104,11 +104,12 @@ handleError(error) {
                     this.dates=this.res.created_at;
                     this.bio=this.res.familybackground;
                     this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
-                    // console.log(this.response.content[0].location)
+                   
                     this.contents=this.response.content
                     this.comment=this.response.comment
                    
-                    // console.log(this.contents);
+                   
+                    
                     
                     //map Init
                     this.coordGet.getLocality(this.response.content[0].location).subscribe(data=>{
@@ -131,15 +132,15 @@ handleError(error) {
                       })
                   })
                     
-                    this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload//'+this.res.t_image
-                    this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload//'+this.res.image;
-                      // console.log(this.sdet);
+                    this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
+                    this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                     
                     })
                 
               }
 
               else {
-                console.log(id)
+             
           
                 // var id = params.get('id');
                 this.Jarwis.getcontent(id).subscribe(data=>{
@@ -180,8 +181,8 @@ handleError(error) {
                 })
                   
                   this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                  this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload//'+this.res.image;
-                    // console.log(this.sdet);
+                  this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+                   
                   })
               }
 
@@ -191,11 +192,6 @@ handleError(error) {
         }
 
         
-
-    // this.Jarwis.productdetail1(id).subscribe(data=>{
-    //   this.response1 = data;
-      
-    // })
     // this.Jarwis.productdetail2(id).subscribe(data=>{
     //   this.response2 = data;
      
@@ -206,5 +202,6 @@ handleError(error) {
   }
   navigate(id){
     this.router.navigate(['Content/'+id+''])
+   
   }
 }

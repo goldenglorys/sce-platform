@@ -29,19 +29,13 @@ export class ProfileComponent implements OnInit {
   datas: { formdata: any; };
   constructor( private http: HttpClient,private formBuilder: FormBuilder,private Token: TokenService, private Jarwis: JarwisService,private router: Router) { }
   public response:any;
-  // ngForm: FormGroup;
   public form ={
     emails:'',
     pass:''
 
   };
- //  private info : any;
  
-
-
  ngOnInit() {
-
-   // console.log(this.response)
       
    this.submissionForm = this.formBuilder.group(
      
@@ -64,7 +58,7 @@ export class ProfileComponent implements OnInit {
   displayprofile(){
  this.Jarwis.profile().subscribe(
    data=>{
-   console.log(data);
+
    this.response = data;
   
    this.submissionForm = this.formBuilder.group(
@@ -93,9 +87,9 @@ uploadFile(event){
   let reader = new FileReader();
   let vm = this;
   reader.onloadend =()=> {
-    // body...
+    
     this.image = reader.result;
-  //  console.log(this.response.file)
+ 
   }
   reader.readAsDataURL(files);
 }
@@ -109,15 +103,10 @@ onSubmit1() {
  
 }
 handleResponse(data) {
- // this.Token.handle(data.access_token);
+
   this.router.navigateByUrl('/User/(side:Profile)');
+  this.ngOnInit();
 }
-//   // ngOnInit() {
-  //   $(document).ready(function(){
-  //     $('.myid').click(function(){
-  //      alert();
-  //     });
-  //   });
-  // }
+
 
 }

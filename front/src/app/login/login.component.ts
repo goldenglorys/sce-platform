@@ -17,9 +17,6 @@ public role;
   public form = {
     email: null,
     password: null
-    // actname: null,
-    // description:null,
-    // selects:''
   };
 
   public error = null;
@@ -36,7 +33,7 @@ public role;
   ) { }
  
   onSubmit() {
-    console.log(this.form)
+   
     this.Jarwis.login(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -47,7 +44,7 @@ public role;
     let snackBarRef = this.snackBar.open("Login successfully", 'Dismiss', {
       duration: 2000
     })
-    // this.message='Login successfully'
+   
    
     this.Token.handle(data.access_token);
    
@@ -66,7 +63,7 @@ public role;
   }
 
   ngOnInit() {
-    // login by gmail
+  
     
   }
 

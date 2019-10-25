@@ -29,19 +29,16 @@ contents:null,
   disabled=false;
   id: any;
   data: any;
-  // orderForm: FormGroup;
-  // items: FormArray;
   public orderForm: FormGroup;
   public items = [];
   image: any;
   constructor(private Jarwis: JarwisService, private router: Router, private formBuilder: FormBuilder,public snackBar: MatSnackBar,private coordGet: MapServiceService ) { }
   dataChanged(event){
     this.form.category_id=event
-   console.log(this.form.category_id)
    this.id=this.form.category_id
      this.Jarwis.post(this.id).subscribe(data=>{
         this.response = data;
-      console.log(this.response)
+     
      
       })
   }
@@ -58,17 +55,12 @@ contents:null,
     this.disabled=false;
   }
 
-  // if (error) {
-  //    let snackBarRef = this.snackBar.open('Input error, check your input.', 'Dismiss', {
-  //     duration: 2000
-  //   })
-  // }
+  
   
   handleResponse(data) {    
     let snackBarRef = this.snackBar.open('Save Successfully', 'Dismiss', {
       duration: 2000
     })
-   // this.Token.handle(data.access_token);
    this.disabled=true;
     this.router.navigateByUrl('/User/(side:Details)');
   }
@@ -79,12 +71,12 @@ contents:null,
   addItem(): void{
     let header = this.orderForm.value.header;
     let content = this.orderForm.value.content;
-    // let list = this.orderForm.value.list;
+
     let existingItem = this.items.filter(i => i.header==header && i.content == content)
     if(existingItem.length == 0){
       let id = this.items.length;
       this.items.push({id: id,header: header, content: content})
-      // console.log(this.orderForm)
+      
       
     }else{
       let snackBarRef = this.snackBar.open('Information already exist', 'Dismiss', {
@@ -111,7 +103,7 @@ contents:null,
     reader.onloadend =()=> {
       // body...
       this.form.t_image = reader.result;
-    //  console.log(this.response.file)
+   
     }
     reader.readAsDataURL(files);
   }
@@ -120,9 +112,9 @@ contents:null,
     
       this.Jarwis.getact().subscribe(
         data=>{
-        // console.log(data);
+       
         this.res = data;  
-        // this.roleid=this.res[0]
+        
         console.log(this.res)
         }
       )
