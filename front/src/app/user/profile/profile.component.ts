@@ -111,6 +111,7 @@ onSubmit1() {
 handleResponse(data) {
  // this.Token.handle(data.access_token);
   this.router.navigateByUrl('/User/(side:Profile)');
+  this.ngOnInit()
 }
 //   // ngOnInit() {
   //   $(document).ready(function(){
