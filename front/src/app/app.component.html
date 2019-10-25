@@ -13,11 +13,12 @@
                       <!-- <a href="create-agency.html" class="promoted">Create Agency</a> -->
                       <a [routerLink]="['/Signin']" class="promoted" *ngIf="!loggedIn"><strong>Register</strong></a>
                       <a [routerLink]="['/Login']" *ngIf="!loggedIn">Sign In</a>
-                      <a href=""  [routerLink]="['/User', {outlets: {side: ['Details']}}]"  *ngIf="loggedIn">
+                      <a href=""  [routerLink]="['/User', {outlets: {side: ['Profile']}}]"  *ngIf="loggedIn">
                         Account </a>
                         <a href="" (click)="logout($event)"  routerLink="Register" *ngIf="loggedIn">
                              Logout
                               </a>
+                              <a href="" *ngIf="loggedIn"><img [src]='image'  style="width: 30px;border-radius: 50%;height: 30px;"></a>
                   </div>                
               </div>
           </div>
