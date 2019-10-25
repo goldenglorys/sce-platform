@@ -9,14 +9,15 @@
               <div class="row">
                   <div class="col-md-3 col-sm-4">
                       <div class="search-box map">
-                        <form class="example-form">
-                            <input type="text" placeholder="Search for a street" [formControl]="control" [matAutocomplete]="auto">
+                        <form class="example-form" (submit)="search()">
+                            <input type="text" placeholder="Search for a street" style="border: 1px solid red; border-radius: 5px" (keyup) = 'locateMe($event)' [formControl]="control" [matAutocomplete]="auto">
+                            <button class="btn btn-info">Search</button>
                             <mat-autocomplete #auto="matAutocomplete">
                                 <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
                                 <a href="/Content/{{street}}"> {{street}} </a>
                                 </mat-option>
                             </mat-autocomplete>
-                            </form>
+                        </form>
                       </div><!-- /.search-box.map -->
                   </div><!-- /.col-md-3 -->
               </div><!-- /.row -->

@@ -24,57 +24,57 @@ export class HomeComponent implements OnInit {
    map: google.maps.Map;
   
 
-  public valToSearch = {
-    status: null,
-    category: null
-  }
-  
+  public valToSearch;
 
-  res: any;
-  rese: any;
-  resp: any;
-  resl: any;
-  resn: any;
-  resb: any;
-  resa: any ;
-  resh: any;
-  reseh: any;
-  resph: any;
-  reslh: any;
-  resnh: any;
-  resbh: any;
-  resah: any ;
-  resc: any;
-  resec: any;
-  respc: any;
-  reslc: any;
-  resnc: any;
-  resbc: any;
-  resac: any ;
-  actname1: any;
-  actname2: any;
-  actname3: any;
-  actname4: any;
-  actname5: any;
-  actname: any;
+   public localGovt = [
+    ['Abeokuta-North', 7.2114, 3.1378],
+    ['Abeokuta-South', 7.1561, 3.3490],
+    ['Ado Ota', 6.6117, 3.0576],
+    ['Ewekoro', 6.9333296, 3.2166658],
+    ['Ifo',6.8149, 3.1952],
+    ['Ijebu North', 7.0333, 3.9470],
+    ['Ijebu Ode', 6.8300, 3.9165],
+    ['Ijebu East', 6.8159, 4.3154],
+    ['Ikenne', 6.8717, 3.7105],
+    ['Imwko Afon', 7.4477, 2.8380],
+    ['Ipokia', 6.5250, 2.8403],
+    ['Obafemi Owode', 6.9483, 3.5079],
+    ['Odeda', 7.2328, 3.5281],
+    ['Odogbolu',6.8365, 3.7689],
+    ['Ogun Water Side',6.5169, 4.3565],
+    ['Remo North',7.0137, 3.7232],
+    ['Sagamu',6.8322, 3.6319],
+    ['Yewa North',7.1702, 2.8577],
+    ['Yewa South',6.7832, 2.9776]
+  ]
+
+
+  res: any; rese: any; resp: any; resl: any; resn: any; resb: any; resa: any ; resh: any;  reseh: any;  resph: any; reslh: any; resnh: any; resbh: any; resah: any; resc: any; resec: any; respc: any ; reslc: any; resnc: any; resbc: any; resac: any ; actname1: any; actname2: any; actname3: any; actname4: any; actname5: any; actname: any;
 
   title: any;
   searchdata: any;
   searchs:any;
+  response: any;
+
   id: any;
   id1: any;
   id2: any;
   id3: any;
   id4: any;
   id5: any;
-  constructor(private Jarwis: JarwisService,private router: Router,private mapserver: MapServiceService) { }
-
+  constructor(private Jarwis: JarwisService,private router: Router,private mapserver: MapServiceService, private coordGet: MapServiceService) { }
 
   public lat;
   data: any;
   newArr = [];
+  public beach;
+  public marker;
+
 
   ngOnInit() {
+
+    this.initMap();
+
     this.Jarwis.getalltitle().subscribe(data=>{
       let y:any = data;
       for(let x=0; x<y.length; x++){
@@ -84,23 +84,9 @@ export class HomeComponent implements OnInit {
           this.newArr.push(z);
           this.newArr.push(w);
         };
-
-       
       }
       })
     
-      
-      this.map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 6.9075, lng: 3.5813 },
-        zoom: 10,
-        panControl: true,
-        mapTypeControl: false,
-        scaleControl: true,
-        streetViewControl: false,
-        // overviewMapControl: true,
-        rotateControl: true,
-        //mapTypeId: google.maps.mapTypeId.ROADMAP
-      })
 
       this.Jarwis.displayevent().subscribe(
         data=>{
@@ -177,11 +163,7 @@ export class HomeComponent implements OnInit {
       )
       this.Jarwis.getalltitle().subscribe(
         data=>{
-        this.title = data;  
-        
-       
-        
-        
+        this.title = data;
         }
       )
      
@@ -196,11 +178,79 @@ export class HomeComponent implements OnInit {
       
   }
 
-  
+  initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: {lat: 6.9075, lng: 3.5813 }
+    });
+    var image = {
+      url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+      // This marker is 20 pixels wide by 32 pixels high.
+      size: new google.maps.Size(20, 32),
+      // The origin for this image is (0, 0).
+      origin: new google.maps.Point(0, 0),
+      // The anchor for this image is the base of the flagpole at (0, 32).
+      anchor: new google.maps.Point(0, 32)
+    };
+    // Shapes define the clickable region of the icon. The type defines an HTML
+    // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+    // The final coordinate closes the poly by connecting to the first coordinate.
+    var shape = {
+      coords: [1, 1, 1, 20, 18, 20, 18, 1],
+      type: 'poly'
+    };
+    
+    this.marker = new google.maps.Marker({
+      map: map,
+      icon: image,
+      
+      draggable: true,
+      animation: google.maps.Animation.DROP,
+      position: {lat: 7.1475, lng: 3.3619}
+    });
+    
+    for (var i = 0; i < this.localGovt.length; i++) {
+      this.beach = this.localGovt[i];
+      this.marker = new google.maps.Marker({
+      map: map,
+      draggable: true,
+      animation: google.maps.Animation.DROP,
+      position: {lat: this.beach[1], lng: this.beach[2]},
+    });
+    // this.marker.addListener('click', toggleBounce);
+  } }
 
-  cat(event: any) {
-    this.valToSearch.category = event.target.value;
-    alert(this.valToSearch.category)
+  locateMe(event: any) {
+    this.valToSearch = event.target.value;
+    // alert(this.valToSearch.category)
+    //map Init
+    this.coordGet.getLocality(this.valToSearch).subscribe(data=>{console.log(data)
+      this.data = data;
+
+      let lat = this.data.results[0].geometry.location.lat;
+      let long = this.data.results[0].geometry.location.lng;
+      console.log('lat= '+ lat +' and long= '+ long );
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: lat, lng:  long},
+        zoom: 10,
+        panControl: true,
+        mapTypeControl: false,
+        scaleControl: true,
+        streetViewControl: false,
+        // overviewMapControl: true,
+        rotateControl: true,
+        //mapTypeId: google.maps.mapTypeId.ROADMAP
+      })
+      this.marker = new google.maps.Marker({
+        map: map,
+        
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: {lat: lat, lng:  long},
+        
+      });
+    })
   }
 
   public search(): void {
@@ -241,11 +291,9 @@ export class HomeComponent implements OnInit {
     })
   }
 
-
   streets: string[] = this.newArr ;
   private _filter(value: string): string[] {
-   
-    
+    console.log(this.newArr)
     
     console.log(Array.isArray(this.streets));
     const filterValue = this._normalizeValue(value);
@@ -255,6 +303,8 @@ export class HomeComponent implements OnInit {
   private _normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
   }
+
+
   navigat(id){
     // console.log(id)
    this.router.navigate(['Category/'+id+''])
