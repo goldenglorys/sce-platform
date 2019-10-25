@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
           this.newArr.push(w);
         };
 
-        console.log(this.newArr)
+        // console.log(this.newArr)
       }
       })
       //map Init
@@ -169,7 +169,7 @@ export class HomeComponent implements OnInit {
         this.actname5=this.resph.actname
         this.id5=this.resph.id
         this.respc=this.resp.subevent 
-        //  console.log(this.respc)
+         console.log(this.respc)
         
         }
       )

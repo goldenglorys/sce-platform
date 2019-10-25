@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'}
 )
 export class JarwisService {
+ 
   private baseUrl = 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api';
 
   constructor(private http: HttpClient) { }
@@ -81,6 +82,9 @@ export class JarwisService {
   }
   getalltitle() {
     return this.http.get(`${this.baseUrl}/getalltitle`,)
+  }
+  getfootertitle() {
+    return this.http.get(`${this.baseUrl}/getfootertitle`,)
   }
   gettitles(id:string) {
     return this.http.get(`${this.baseUrl}/gettitles/${id}`)

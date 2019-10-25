@@ -70,14 +70,14 @@
                   </div> -->                   
                   <h4>Are you form Ogun state</h4>
                     <mat-form-field>
-                      <mat-label>Are you form Ogun state</mat-label>
+                      <mat-label>Are you from Ogun state</mat-label>
                       <select matNativeControl required  ng-model="item">
-                        <option value="volvo">Yes</option>
-                        <option value="saab">No</option>                        
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>                        
                       </select>
-                    </mat-form-field>
-
-                    <input type="text" ng-disabled="disabled" class="form-control" id="account-surnamename" name="firstname" [(ngModel)]="form.family">
+                    </mat-form-field><br>
+                    <label for="Family-Name">Family Name:</label>
+                    <input type="text" ng-disabled="disable" class="form-control" id="account-surnamename" name="family" [(ngModel)]="form.family">
                   <hr>
                   <h3>Personal Information</h3>
                 <div class="form-group">

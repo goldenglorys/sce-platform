@@ -67,6 +67,7 @@ class DisplayController extends Controller
             [
 
                 'event' =>Activities::where('id','=',3)->get(),
+                
                 'subevent'=>title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
                 ->select('titles.*','categories.catname','categories.destription','categories.activity_id')
                ->where('activity_id','=',3)
@@ -115,6 +116,17 @@ class DisplayController extends Controller
         
         );
     }
+
+    public function getfootertitle()
+    {
+        return response()->json([
+            title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
+            ->select('titles.*','categories.catname')
+            ->inRandomOrder()->limit(2)
+               ->get()
+        ]);
+    }
+    
     public function search($searchTerm)
     {
        
@@ -128,15 +140,17 @@ class DisplayController extends Controller
 
     public function gettitles($id)
     {
-        return response()->json(
+        return response()->json([
           
-                title::orderBy('id')->join('categories','titles.category_id','=','Categories.id')
+               'title'=> title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
                 ->join('users','titles.user_id','=','users.id')
             ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename')
             ->where('activity_id','=',$id)
             // ->inRandomOrder()->take(4) 
-               ->get()
+               ->get(),
+            'acti' =>Activities::where('id','=', $id)->get(),
+            'cat' =>Category::where('activity_id','=', $id)->get()
         
-        );
+        ]);
     }
 }

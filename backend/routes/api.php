@@ -40,6 +40,7 @@ Route::get('displaylocation','DisplayController@displaylocation');
 
 Route::get('getcontent/{id}','ContentController@getcontent');
 Route::get('getalltitle','DisplayController@getalltitle');
+Route::get('getfootertitle','DisplayController@getfootertitle');
 Route::get('search/{searchTerm}','DisplayController@search');
 
 Route::get('comments','UserController@getComments');

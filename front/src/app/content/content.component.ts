@@ -21,6 +21,7 @@ export class ContentComponent implements OnInit {
   name: any;
 public detail;
 public data;
+public loggedIn: boolean;
 map: google.maps.Map;
 id: any;
   bio: any;
@@ -30,6 +31,10 @@ id: any;
    
   };
   comment: any;
+  title: any;
+  dates: any;
+  about: any;
+  uimage: any;
 constructor(private Jarwis: JarwisService,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService) { }
 @ViewChild('map') mapElement: any;
 
@@ -94,11 +99,15 @@ handleError(error) {
                     this.actname=this.res.actname;
                     this.catname=this.res.catname;
                     this.form.title_id=this.res.id;
+                    this.title=this.res.name_title;
+                    this.about=this.res.about;
+                    this.dates=this.res.created_at;
                     this.bio=this.res.familybackground;
                     this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
                     // console.log(this.response.content[0].location)
                     this.contents=this.response.content
                     this.comment=this.response.comment
+                   
                     // console.log(this.contents);
                     
                     //map Init
@@ -123,6 +132,7 @@ handleError(error) {
                   })
                     
                     this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload//'+this.res.t_image
+                    this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload//'+this.res.image;
                       // console.log(this.sdet);
                     })
                 
@@ -140,6 +150,9 @@ handleError(error) {
                   this.catname=this.res.catname;
                   this.bio=this.res.familybackground;
                   this.form.title_id=this.res.id;
+                  this.title=this.res.name_title;
+                  this.about=this.res.about;
+                  this.dates=this.res.created_at;
                   this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
                   console.log(this.response.content[0].location)
                   this.contents=this.response.content
@@ -167,6 +180,7 @@ handleError(error) {
                 })
                   
                   this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
+                  this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload//'+this.res.image;
                     // console.log(this.sdet);
                   })
               }

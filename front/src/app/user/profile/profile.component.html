@@ -4,8 +4,11 @@
                     <header><h1>Profile</h1></header>
                     <div class="account-profile">
                         <div class="row">
+                                <!-- <div class="col-md-3 col-sm-3">
+                                        <img alt="" class="image" src="assets/img/agent-01.jpg">
+                                    </div> -->
                             <div class="col-md-3 col-sm-3">
-                                <img alt="" class="image" src="http://localhost/ogun/sce-platform/backend/public/upload/uploads/{{response.image}}">
+                                <img alt="" class="image" src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{response.image}}">
                             </div>
                             <!-- ngModel   value="{{firstname}}" -->
                             <div class="col-md-9 col-sm-9">
@@ -39,9 +42,9 @@
                                             <dd><div class="form-group ">
                                                     <input type="text" formControlName="family" >
                                                </div></dd>
-                                               <dt><label for="form-account-name">FamilyBackground:</label></dt>
+                                               <dt><label for="form-account-name">About me:</label></dt>
                                             <dd><div class="form-group ">
-                                                    <input type="text" formControlName="familybackground" >
+                                                    <input type="text" rows="5" formControlName="familybackground" >
                                                </div></dd>
                                                <dt><label for="form-account-phone">Phone:</label></dt>
                                             <dd><div class="form-group">
@@ -64,15 +67,7 @@
                                                     <!-- <button (click)="onSubmit1()">SUBMIT</button> -->
                                             
                                     </section>
-                                </form>
-                                    <section id="about-me">
-                                        <h3>About Me</h3>
-                                        <div class="form-group">
-                                            <textarea class="form-control" id="form-contact-agent-message" rows="5" name="form-contact-agent-message">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et dui vestibulum, bibendum purus sit amet, vulputate mauris. Ut adipiscing gravida tincidunt. Duis euismod placerat rhoncus.
-  Phasellus mollis imperdiet placerat. Sed ac turpis nisl. Mauris at ante mauris. Aliquam posuere fermentum lorem, a aliquam mauris rutrum.</textarea>
-                                        </div><!-- /.form-group -->
-                                    </section>
+                                </form>                                    
                                     <section id="social">
                                         <h3>My Social Network</h3>
                                         <div class="form-group">

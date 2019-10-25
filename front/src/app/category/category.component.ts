@@ -10,6 +10,9 @@ import { TokenService } from '../service/token.service';
 })
 export class CategoryComponent implements OnInit {
   response: any;
+  cat: any;
+  actname: any;
+  title: any;
 
   constructor(
     private Auth: AuthService,
@@ -25,6 +28,11 @@ export class CategoryComponent implements OnInit {
       
       this.Jarwis.gettitles(id).subscribe(data=>{
         this.response = data;
+        this.actname=this.response.acti[0].actname
+        this.title=this.response.title
+        this.cat=this.response.cat
+        // this.id4=this.resnh.id
+        console.log(this.title)
         console.log(this.response)
      
       })

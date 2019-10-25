@@ -34,7 +34,8 @@ export class SigninComponent implements OnInit {
     password_confirmation: null,
     role_id:null
   };
-  disabled= false;
+  disable= "disabled";
+  disabled= true;
   public error: any;
   public gender;
   response: Object;

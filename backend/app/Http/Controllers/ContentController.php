@@ -24,7 +24,7 @@ class ContentController extends Controller
         'name'=>title::orderBy('id')->join('categories','titles.category_id','=','categories.id')
         ->join('activities','categories.activity_id','=','activities.id')
         ->join('users','titles.user_id','=','users.id')
-        ->select('titles.*','categories.catname','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground')
+        ->select('titles.*','categories.catname','categories.destription','categories.activity_id','activities.actname','users.firstname','users.lastname','users.middlename', 'users.familybackground', 'users.image')
        ->where('titles.id','=',$id)->get(),
        'comment'=>comment_tbs::orderBy('id')->join('titles','comment_tbs.title_id','=','titles.id')
        ->join('users','comment_tbs.user_id','=','users.id')

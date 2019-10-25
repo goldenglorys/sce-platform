@@ -6,7 +6,7 @@
       <div class="secondary-navigation">
           <div class="container">
               <div class="contact">                  
-                  <figure><strong>Phone:</strong>Your Location</figure>
+                  <figure><strong>Location:</strong>Ogun, Nigeria</figure>
               </div>
               <div class="user-area">
                   <div class="actions">
@@ -55,13 +55,11 @@
                       </li>                      
                       <li><a [routerLink]="['/About']">About</a></li>
                       <li><a [routerLink]="['/Contact']">Contact</a></li>
-                      <li><a [routerLink]="['/User', {outlets: {side: ['Details']}}]" >Contribute</a></li>                  
-                      
+                      <li><a [routerLink]="['/User', {outlets: {side: ['Post']}}]" *ngIf="loggedIn" >Contribute</a></li>                  
+                      <li><a [routerLink]="['/Login']" *ngIf="!loggedIn" >Contribute</a></li>  
                   </ul>
               </nav><!-- /.navbar collapse-->
-              <div class="add-your-property">
-                  <a href="submit.html" class="btn btn-default"><i class="fa fa-plus"></i><span class="text">Add Your Property</span></a>
-              </div>
+              
           </header><!-- /.navbar -->
       </div><!-- /.container -->
   </div><!-- /.navigation -->
@@ -85,41 +83,28 @@
                       <div class="col-md-3 col-sm-3">
                           <article>
                               <h3>About Us</h3>
-                              <p>Vel fermentum ipsum. Suspendisse quis molestie odio. Interdum et malesuada fames ac ante ipsum
-                                  primis in faucibus. Quisque aliquet a metus in aliquet. Praesent ut turpis posuere, commodo odio
-                                  id, ornare tortor
+                              <p>Ogun State culture has a rich culture with formidable background that requires preservation and promotion which will not
+                                  happen effectively without the leverage of technology and DEAB intervention.
                               </p>
                               <hr>
-                              <a href="#" class="link-arrow">Read More</a>
+                              <a href="About/" class="link-arrow">Read More</a>
                           </article>
                       </div><!-- /.col-sm-3 -->
                       <div class="col-md-3 col-sm-3">
                           <article>
                               <h3>Recent Properties</h3>
-                              <div class="property small">
-                                  <a href="property-detail.html">
+                              <div class="property small" *ngFor="let f of footer">
+                                  <a (click)="nav(f.id)">
                                       <div class="property-image">
-                                          <img alt="" src="assets/img/properties/property-06.jpg">
+                                          <img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{f.t_image}}">
                                       </div>
                                   </a>
                                   <div class="info">
-                                      <a href="property-detail.html"><h4>2186 Rinehart Road</h4></a>
-                                      <figure>Doral, FL 33178 </figure>
-                                      <div class="tag price">$ 72,000</div>
+                                      <a ><h4>{{f.name_title}}</h4></a>
+                                      <!-- <figure>{{f.}}</figure> -->
+                                      <div class="tag price">{{f.catname}}</div>
                                   </div>
-                              </div><!-- /.property -->
-                              <div class="property small">
-                                  <a href="property-detail.html">
-                                      <div class="property-image">
-                                          <img alt="" src="assets/img/properties/property-09.jpg">
-                                      </div>
-                                  </a>
-                                  <div class="info">
-                                      <a href="property-detail.html"><h4>2479 Murphy Court</h4></a>
-                                      <figure>Minneapolis, MN 55402</figure>
-                                      <div class="tag price">$ 36,000</div>
-                                  </div>
-                              </div><!-- /.property -->
+                              </div><!-- /.property -->                              
                           </article>
                       </div><!-- /.col-sm-3 -->
                       <div class="col-md-3 col-sm-3">

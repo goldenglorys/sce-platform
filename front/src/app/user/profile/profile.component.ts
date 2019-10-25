@@ -110,7 +110,7 @@ onSubmit1() {
 }
 handleResponse(data) {
  // this.Token.handle(data.access_token);
-  this.router.navigateByUrl('/User');
+  this.router.navigateByUrl('/User/(side:Profile)');
 }
 //   // ngOnInit() {
   //   $(document).ready(function(){
