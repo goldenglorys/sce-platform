@@ -23,10 +23,13 @@ export class ProfileComponent implements OnInit {
   familybackground: any;
   town: any;
   gender: any;
+  disabled= false;
+  sav= 'Update';
   
   public submissionForm: FormGroup;
   image: any;
   datas: { formdata: any; };
+  error: any;
   constructor( private http: HttpClient,private formBuilder: FormBuilder,private Token: TokenService, private Jarwis: JarwisService,private router: Router) { }
   public response:any;
   public form ={
@@ -95,16 +98,26 @@ uploadFile(event){
 }
 
 onSubmit1() {
-  
+  this.disabled=true;
+  this.sav= ' Updating';
   this.Jarwis.updateprofile({formdata:this.submissionForm.value,image:this.image}).subscribe(
     data => this.handleResponse(data),
-   //error => this.handleError(error)
+   error => this.handleError(error)
  );
  
 }
-handleResponse(data) {
-
+handleError(error) {
+  this.disabled=false; 
+  this.error = error.error.errors;
+  console.log(this.error);
+  this.disabled=false;
+  this.sav= 'Update';
+}
+handleResponse(data) {  
   this.router.navigateByUrl('/User/(side:Profile)');
+  this.disabled=false;
+  this.sav= 'Updated';
+
   this.ngOnInit()
 }
 

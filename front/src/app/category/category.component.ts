@@ -40,6 +40,11 @@ export class CategoryComponent implements OnInit {
         }));
   }
   navigates(id){
-    this.router.navigate(['Category/'+id+''])
+    this.router.navigate(['Category/'+id+'']);
+    this.ngOnInit()
+  }
+  navigate(id){
+    this.router.navigate(['Content/'+id+'']);
+    this.ngOnInit()
   }
 }

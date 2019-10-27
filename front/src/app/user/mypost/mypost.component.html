@@ -1,15 +1,53 @@
- <!-- Content -->
- <div class="col-md-9 col-sm-9">
-    <section id="content">
-        <div style="margin-top: 10px;">
-            <section class="center submission-message">
-                <a href="" ><img src="assets/img/sabiogun.png" alt="brand"></a>
-                <header>This  Page is still under construction</header>
-                <p>Please sing in and go on with your contribution, we are coming soon</p>
-                <a href="" class="link-arrow">Go to homepage</a>
-                <a href="User/(side:Details)" class="link-arrow">Log in</a>
-            </section>
-        </div><!-- /.container -->
-    </section><!-- /#content -->
-</div><!-- /.col-md-9 -->
-<!-- end Content -->
+
+                <!-- My Properties -->
+                <div class="col-md-9 col-sm-10">
+                    <section id="my-properties">
+                        <header><h1>My Contribution</h1></header>
+                        <div class="my-properties">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Property</th>
+                                        <th></th>
+                                        <th>Date Added</th>
+                                        <th>Views</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let t of title">
+                                        <td class="image">
+                                            <a href="property-detail.html"><img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{t.t_image}}"></a>
+                                        </td>
+                                        <td><div class="inner">
+                                            <a (click)="navigate(t.id)" href="property-detail.html"><h2>{{t.name_title}}</h2></a>
+                                            <figure>{{t.location}}</figure>
+                                            <div class="tag price">{{t.catname}}</div>
+                                        </div>
+                                        </td>
+                                        <td>{{t.about}}</td>
+                                        <td>236</td>
+                                        <td class="actions">
+                                            <a href="#" class="edit"><i class="fa fa-pencil"></i>Edit</a>
+                                            <a href="#"><i class="delete fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>                                    
+                                    </tbody>
+                                </table>
+                            </div><!-- /.table-responsive -->
+                            <!-- Pagination -->
+                            <div class="center">
+                                <ul class="pagination">
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                </ul><!-- /.pagination-->
+                            </div><!-- /.center-->
+                        </div><!-- /.my-properties -->
+                    </section><!-- /#my-properties -->
+                </div><!-- /.col-md-9 -->
+                <!-- end My Properties -->
+        

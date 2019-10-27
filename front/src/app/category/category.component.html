@@ -18,7 +18,7 @@
                         <section id="search-filter">
                             <figure><h3><i class="fa fa-search"></i>Search Results:</h3>
                                 <span class="search-count">28</span>
-                                <div class="sorting">
+                                <!-- <div class="sorting">
                                     <div class="form-group">
                                         <select name="sorting">
                                             <option value="">Sort By</option>
@@ -26,8 +26,8 @@
                                             <option value="2">Highest price first</option>
                                             <option value="3">Date added</option>
                                         </select>
-                                    </div><!-- /.form-group -->
-                                </div>
+                                    </div>
+                                </div> -->
                             </figure>
                         </section>
                         <section id="properties" class="display-lines">
@@ -36,13 +36,13 @@
                                 <figure class="type" title="Apartment"><img src="" alt=""></figure>
                                 <div class="property-image">
                                     <!-- <figure class="ribbon">In Hold</figure> -->
-                                    <a [routerLink]="['/Content', t.id]">
+                                    <a routerLink="" (click)="navigate(t.id)" >
                                         <img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{t.t_image}}" (click)="onClick()">
                                     </a>
                                 </div>
                                 <div class="info">
                                     <header>
-                                        <a [routerLink]="['/Content', t.id]" href="property-detail.html"><h3>{{t.name_title}}</h3></a>
+                                        <a routerLink="" (click)="navigate(t.id)"><h3>{{t.name_title}}</h3></a>
                                         <figure>Location: {{t.location}}</figure>
                                     </header>
                                     <div class="tag price">{{t.catname}}</div>

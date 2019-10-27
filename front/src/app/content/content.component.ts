@@ -25,6 +25,8 @@ public loggedIn: boolean;
 map: google.maps.Map;
 id: any;
   bio: any;
+  disable= false;
+    sav= 'Comment';
   public form = {
     comment: null,
     title_id: null,
@@ -36,12 +38,18 @@ id: any;
   about: any;
   uimage: any;
   marker: google.maps.Marker;
+  error: any;
+  cat: any;
+  result: Object;
 constructor(private Jarwis: JarwisService,public snackBar: MatSnackBar,private router: Router, public actRoute: ActivatedRoute, private coordGet: MapServiceService) { }
 @ViewChild('map') mapElement: any;
 
 
 
 onSubmit() {
+
+  this.disable= true;
+    this.sav= 'Comment';
   let token=localStorage.getItem('token')
 
   if (token==null){
@@ -50,9 +58,7 @@ onSubmit() {
     })
   this.router.navigateByUrl('/Login');
   }
-  else{
-   
-   
+  else{  
     
      this.Jarwis.comment(this.form).subscribe(
     
@@ -67,24 +73,34 @@ handleResponse(data) {
   let snackBarRef = this.snackBar.open('Comment Successfully', 'Dismiss', {
     duration: 2000
   });
+  this.disable= false;
+    this.sav= 'Comment';
   this.ngOnInit()
 }
 
 handleError(error) {
-  // this.error = error.error.errors;
+  this.disable= false;
+    this.sav= 'Comment';
+  this.error = error.error.errors;
 }
   ngOnInit() {
+
+    this.Jarwis.getact().subscribe(
+      data=>{
+      
+      this.result = data;
+      console.log(this.result)  
+      
+      }
+    )
+
 
     this.actRoute.paramMap.subscribe((params => {  
       
       var id= this.actRoute.snapshot.params['id'];
-      // id = data[x].id;
-     
-      
-   
+      // id = data[x].id;  
 
-      if(typeof params.get('id') == 'string') { 
-        
+      if(typeof params.get('id') == 'string') {         
         
         this.Jarwis.getalltitle().subscribe(data=>{
             for(let x in data){
@@ -118,11 +134,11 @@ handleError(error) {
                 
                       let lat = this.data.results[0].geometry.location.lat;
                       let long = this.data.results[0].geometry.location.lng;
-                      console.log('lat= '+ lat +' and long= '+ long );
+                      // console.log('lat= '+ lat +' and long= '+ long );
 
                       var map = new google.maps.Map(document.getElementById('map'), {
                         center: {lat: lat, lng:  long},
-                        zoom: 12,
+                        zoom: 15,
                         panControl: true,
                         mapTypeControl: false,
                         scaleControl: true,
@@ -147,8 +163,8 @@ handleError(error) {
                 
               }
 
-              else {
-             
+              else {            
+              
           
                 // var id = params.get('id');
                 this.Jarwis.getcontent(id).subscribe(data=>{
@@ -162,10 +178,11 @@ handleError(error) {
                   this.title=this.res.name_title;
                   this.about=this.res.about;
                   this.dates=this.res.created_at;
+                  // this.cat=this.response.name
                   this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
-                  console.log(this.response.content[0].location)
+                  // console.log(this.cat)
                   this.contents=this.response.content
-                  console.log(this.contents);
+                  // console.log(this.contents);
                   this.comment=this.response.comment
                   //map Init
                   this.coordGet.getLocality(this.response.content[0].location).subscribe(data=>{
@@ -173,11 +190,11 @@ handleError(error) {
               
                     let lat = this.data.results[0].geometry.location.lat;
                     let long = this.data.results[0].geometry.location.lng;
-                    console.log('lat= '+ lat +' and long= '+ long );
+                    // console.log('lat= '+ lat +' and long= '+ long );
       
                     var map = new google.maps.Map(document.getElementById('map'), {
                       center: {lat: lat, lng:  long},
-                      zoom: 12,
+                      zoom: 15,
                       panControl: true,
                       mapTypeControl: false,
                       scaleControl: true,
@@ -215,8 +232,12 @@ handleError(error) {
    
    
   }
-  navigate(id){
+ navigate (id){
     this.router.navigate(['Content/'+id+''])
+   
+  }
+  naviga (id){
+    this.router.navigate(['Category/'+id+''])
    
   }
 }

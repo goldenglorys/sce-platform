@@ -63,10 +63,12 @@ export class AppComponent {
   }
   navigate(id){
     this.router.navigate(['Category/'+id+''])
+    this.ngOnInit()
   }
 
   nav(id){
-    this.router.navigate(['Content/'+id+''])
+    this.router.navigate(['Content/'+id+'']);
+    this.ngOnInit()
   }
 
 
