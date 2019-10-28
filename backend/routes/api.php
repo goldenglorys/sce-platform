@@ -12,6 +12,7 @@ Route::group([
 
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
+    Route::post('adminLogin','AuthController@adminLogin');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::get('me', 'AuthController@me');
@@ -49,7 +50,8 @@ Route::get('all','UserController@getAll');
 Route::get('articles','UserController@getArticle');
 Route::get('titlerates','UserController@getRatesforTitle');
 Route::get('titlecomment','UserController@getcommentforTitle');
-
+Route::post('addview','UserController@addview');
+Route::post('updatePost','UserController@updatepost');
 
 //  Route::get('test',function(){rolecate
 //      return response()->json([
