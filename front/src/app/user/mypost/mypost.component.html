@@ -18,18 +18,18 @@
                                     <tbody>
                                     <tr *ngFor="let t of title">
                                         <td class="image">
-                                            <a href="property-detail.html"><img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{t.t_image}}"></a>
+                                            <a routerLink="" (click)="navigate(t.id)"><img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{t.t_image}}"></a>
                                         </td>
                                         <td><div class="inner">
-                                            <a (click)="navigate(t.id)" href="property-detail.html"><h2>{{t.name_title}}</h2></a>
+                                            <a routerLink="" (click)="navigate(t.id)" href="property-detail.html"><h2>{{t.name_title}}</h2></a>
                                             <figure>{{t.location}}</figure>
                                             <div class="tag price">{{t.catname}}</div>
                                         </div>
                                         </td>
-                                        <td>{{t.about}}</td>
+                                        <td>{{t.updated_at}}</td>
                                         <td>236</td>
                                         <td class="actions">
-                                            <a href="#" class="edit"><i class="fa fa-pencil"></i>Edit</a>
+                                            <a [routerLink]="['/User', {outlets: {side: ['Update', t.id]}}]" class="edit"><i class="fa fa-pencil"></i>Edit</a>
                                             <a href="#"><i class="delete fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>                                    

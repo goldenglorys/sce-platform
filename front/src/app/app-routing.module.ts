@@ -15,6 +15,7 @@ import { MypostComponent } from './user/mypost/mypost.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { UpdateComponent } from './user/update/update.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
          {path: 'Profile', component: ProfileComponent, outlet: 'side',canActivate: [AfterLoginService]},
          {path: 'Details', component: DetailsComponent, outlet: 'side',canActivate: [AfterLoginService] },
          {path: 'Post', component: PostComponent, outlet: 'side',canActivate: [AfterLoginService] },
-         {path: 'Mypost', component: MypostComponent, outlet: 'side' ,canActivate: [AfterLoginService]}
+         {path: 'Mypost', component: MypostComponent, outlet: 'side' ,canActivate: [AfterLoginService]},
+         {path: 'Update/:id', component: UpdateComponent, outlet: 'side' ,canActivate: [AfterLoginService]}
      ],
         },
 

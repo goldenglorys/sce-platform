@@ -153,4 +153,19 @@ class DisplayController extends Controller
         
         ]);
     }
+    public function getUtitles($id)
+    {
+        return response()->json([
+          
+               'title'=> title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')
+                ->join('users','titles.user_id','=','users.id')
+            ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename')
+            ->where('user_id','=',$id)
+            // ->inRandomOrder()->take(4) 
+               ->get(),
+            // 'acti' =>Activities::where('id','=', $id)->get(),
+            // 'cat' =>Category::where('activity_id','=', $id)->get()
+        
+        ]);
+    }
 }

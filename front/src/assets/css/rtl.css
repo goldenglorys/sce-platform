@@ -160,7 +160,7 @@ dl dd .rating {
   font-variant: normal;
   line-height: 1;
   text-transform: none;
-  color: #1396e2;
+  color: #118149;
   content: "\f104";
   left: -5px;
   position: relative;
@@ -199,7 +199,7 @@ dl dd .rating {
   line-height: 1;
   text-transform: none;
   background-color: transparent;
-  color: #1396e2;
+  color: #118149;
   content: "\f104";
   height: 14px;
   position: absolute;
@@ -292,7 +292,7 @@ dl dd .rating {
   line-height: 1;
   text-transform: none;
   content: "\f111";
-  color: #1396e2;
+  color: #118149;
   font-size: 8px;
   position: relative;
   bottom: 2px;
@@ -355,13 +355,13 @@ dl dd .rating {
   border-right: 0px solid transparent;
 }
 #sidebar .sidebar-navigation li:hover {
-  border-color: #1396e2;
+  border-color: #118149;
   padding-left: inherit;
   padding-right: 5px;
   border-right: 0px solid transparent;
 }
 #sidebar .sidebar-navigation li:hover:after {
-  border-color: transparent #1396e2 transparent transparent;
+  border-color: transparent #118149 transparent transparent;
 }
 #sidebar .sidebar-navigation li:after {
   border-width: 4px 4px 4px 0px;
@@ -405,7 +405,7 @@ dl dd .rating {
   display: none;
 }
 #sidebar .sidebar-navigation li i {
-  color: #1396e2;
+  color: #118149;
   margin-left: 8px;
   margin-right: inherit;
 }

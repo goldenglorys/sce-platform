@@ -20,6 +20,7 @@ Route::group([
     
 });
 Route::get('gettitles/{id}','DisplayController@gettitles');
+Route::get('getUtitles/{id}','DisplayController@getUtitles');
 Route::post('comment','CommentController@store');
 Route::post('me','AuthController@updateprofile');
 Route::get('roleuser', 'RoleController@roleuser');

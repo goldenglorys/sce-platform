@@ -31,9 +31,10 @@ export class MypostComponent implements OnInit {
  
   ngOnInit() {
 
-    this.Jarwis.gettitles('4').subscribe(data=>{
+    this.Jarwis.getUtitles('5').subscribe(data=>{
       this.response = data;
-      this.actname=this.response.acti[0].actname
+      console.log("resp", this.response);
+      this.actname=this.response.title[0]
       this.title=this.response.title
       this.cat=this.response.cat
       // this.id4=this.resnh.id
@@ -42,6 +43,17 @@ export class MypostComponent implements OnInit {
    
     })
   
+  }
+
+  navigates(){
+    
+    this.router.navigate(['/User/(side:Update)']);
+    this.ngOnInit()
+  }
+  navigate(id){
+    // [routerLink]="['/User', {outlets: {side: ['Details']}}]"
+    this.router.navigate(['Content/'+id+'']);
+    this.ngOnInit()
   }
 
   
