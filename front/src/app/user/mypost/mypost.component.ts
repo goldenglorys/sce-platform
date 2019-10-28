@@ -17,6 +17,7 @@ export class MypostComponent implements OnInit {
   cat: any;
   actname: any;
   title: any;
+  id: '';
 
   constructor(
               private Auth: AuthService,
@@ -30,8 +31,16 @@ export class MypostComponent implements OnInit {
  
  
   ngOnInit() {
-
-    this.Jarwis.getUtitles('5').subscribe(data=>{
+    this.Jarwis.profile().subscribe(
+      data=>{   
+      this.response = data;    
+    
+      this.id=this.response.id
+      console.log(this.id)
+   
+    })
+    // console.log(this.id)
+    this.Jarwis.getUtitles().subscribe(data=>{
       this.response = data;
       console.log("resp", this.response);
       this.actname=this.response.title[0]

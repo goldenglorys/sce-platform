@@ -91,8 +91,10 @@ export class JarwisService {
   gettitles(id:string) {
     return this.http.get(`${this.baseUrl}/gettitles/${id}`)
   }
-  getUtitles(id:string) {
-    return this.http.get(`${this.baseUrl}/getUtitles/${id}`)
+  getUtitles() {
+    return this.http.get(`${this.baseUrl}/getUtitles`,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
   }
 //  search(searchTerm:string) {
 //     return this.http.get(`${this.baseUrl}/getalltitle/${searchTerm}`)

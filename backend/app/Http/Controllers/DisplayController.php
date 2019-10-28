@@ -7,6 +7,7 @@ use App\title;
 use App\Category;
 use App\Content;
 use App\Activities;
+use App\User;
 class DisplayController extends Controller
 {
     /**
@@ -153,8 +154,10 @@ class DisplayController extends Controller
         
         ]);
     }
-    public function getUtitles($id)
+    public function getUtitles()
     {
+        $id=auth()->user()->id;
+        // return $id;
         return response()->json([
           
                'title'=> title::orderBy('id','desc')->join('categories','titles.category_id','=','categories.id')

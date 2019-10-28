@@ -144,7 +144,7 @@ export class UpdateComponent implements OnInit {
                   this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
                   // console.log(this.cat)
                   this.contents=this.response.content
-                  // console.log(this.contents);
+                  console.log(this.contents);
                   this.comment=this.response.comment
                 
                   this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
