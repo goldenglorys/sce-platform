@@ -31,7 +31,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PopulationComponent } from './admin/population/population.component';
 import { UsersComponent } from './admin/users/users.component';
 import { SettingsComponent } from './admin/settings/settings.component';
-import { UpdateComponent } from './user/update/update.component'​;
+import { UpdateComponent } from './user/update/update.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component'​;
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { UpdateComponent } from './user/update/update.component'​;
     PopulationComponent,
     UsersComponent,
     SettingsComponent,
-    UpdateComponent
+    UpdateComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
