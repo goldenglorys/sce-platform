@@ -45,7 +45,8 @@ export class HomeComponent implements OnInit {
     ['Remo North',7.0137, 3.7232],
     ['Sagamu',6.8322, 3.6319],
     ['Yewa North',7.1702, 2.8577],
-    ['Yewa South',6.7832, 2.9776]
+    ['Yewa South',6.7832, 2.9776],
+    ['State Capital',7.1475, 3.3619],
   ]
 
 
@@ -69,9 +70,11 @@ export class HomeComponent implements OnInit {
   newArr = [];
   public beach;
   public marker;
-
+  public fakerIt = [];
 
   ngOnInit() {
+
+    this.fakerIt = this.mapserver.localGovt();
 
     this.initMap();
 
@@ -183,31 +186,38 @@ export class HomeComponent implements OnInit {
       zoom: 10,
       center: {lat: 6.9075, lng: 3.5813 }
     });
-    var image = {
-      url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-      // This marker is 20 pixels wide by 32 pixels high.
-      size: new google.maps.Size(20, 32),
-      // The origin for this image is (0, 0).
-      origin: new google.maps.Point(0, 0),
-      // The anchor for this image is the base of the flagpole at (0, 32).
-      anchor: new google.maps.Point(0, 32)
-    };
-    // Shapes define the clickable region of the icon. The type defines an HTML
-    // <area> element 'poly' which traces out a polygon as a series of X,Y points.
-    // The final coordinate closes the poly by connecting to the first coordinate.
-    var shape = {
-      coords: [1, 1, 1, 20, 18, 20, 18, 1],
-      type: 'poly'
-    };
+    // var image = {
+    //   url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+    //   // This marker is 20 pixels wide by 32 pixels high.
+    //   size: new google.maps.Size(20, 32),
+    //   // The origin for this image is (0, 0).
+    //   origin: new google.maps.Point(0, 0),
+    //   //The anchor for this image is the base of the flagpole at (0, 32).
+    //   anchor: new google.maps.Point(0, 32)
+    // };
+    // // Shapes define the clickable region of the icon. The type defines an HTML
+    // // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+    // // The final coordinate closes the poly by connecting to the first coordinate.
+    // // var shape = {
+    // //   coords: [1, 1, 1, 20, 18, 20, 18, 1],
+    // //   type: 'poly'
+    // // };
     
-    this.marker = new google.maps.Marker({
-      map: map,
-      icon: image,
-      
-      draggable: true,
-      animation: google.maps.Animation.DROP,
-      position: {lat: 7.1475, lng: 3.3619}
-    });
+    //   let capital = new google.maps.Marker({
+    //   map: map,
+    //   icon: image,
+    //   draggable: true,
+    //   animation: google.maps.Animation.DROP,
+    //   position: {lat: 7.1475, lng: 3.3619}
+    // });
+
+    // let cap = this.mapserver.capital
+    // google.maps.event.addListener(capital,'click', (function(marker,content,infowindow,){ 
+    //   return function() {
+    //     infowindow.setContent(cap);
+    //     infowindow.open(map,marker);
+    // };
+    // })(this.marker,cap,infowindow)); 
     
     for (var i = 0; i < this.localGovt.length; i++) {
       this.beach = this.localGovt[i];
@@ -216,8 +226,21 @@ export class HomeComponent implements OnInit {
       draggable: true,
       animation: google.maps.Animation.DROP,
       position: {lat: this.beach[1], lng: this.beach[2]},
+      title: this.beach[0]+' Local Govt.',
     });
     // this.marker.addListener('click', toggleBounce);
+
+    // map.setCenter(this.marker.getPosition())
+  
+    var content = this.fakerIt[i];
+    var infowindow = new google.maps.InfoWindow()
+    
+    google.maps.event.addListener(this.marker,'click', (function(marker,content,infowindow,){ 
+      return function() {
+        infowindow.setContent(content);
+        infowindow.open(map,marker);
+    };
+    })(this.marker,content,infowindow)); 
   } }
 
   locateMe(event: any) {
