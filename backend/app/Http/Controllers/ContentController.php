@@ -39,7 +39,20 @@ class ContentController extends Controller
        ]
     );
     }
-
+    public function getcontentonly($id)
+    {
+        return response()->json(
+            // Activities::where('id','=',1)->get(),
+            [
+        
+       'content'=>content::orderBy('id')->join('titles','contents.name_id','=','titles.id')
+        ->select('contents.*','titles.name_title','titles.location','titles.t_image')
+       ->where('contents.id','=',$id)
+       
+       ->get()
+       ]
+    );
+    }
     /**
      * Show the form for creating a new resource.
      *

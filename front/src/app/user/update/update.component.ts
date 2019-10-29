@@ -13,10 +13,7 @@ export class UpdateComponent implements OnInit {
 
   public form = {
     category_id: null,
-    name_title:'',
-    location:null,
-    about: 'Content',
-    t_image:null,
+   header:null,
     contents:null,
     }
       disabled=false;
@@ -89,7 +86,7 @@ export class UpdateComponent implements OnInit {
       // c_image:''
     });
     
-
+console.log(this.orderForm.value)
     this.actRoute.paramMap.subscribe((params => {  
       
       var id= this.actRoute.snapshot.params['id'];
@@ -118,7 +115,12 @@ export class UpdateComponent implements OnInit {
                    
                     this.contents=this.response.content
                     this.comment=this.response.comment                    
-                    
+                    this.orderForm =  this.formBuilder.group({
+                      header: '',
+                      content: this.contents,
+                      // list: '',
+                      // c_image:''
+                    });
                     this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
                     this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
                      
@@ -168,17 +170,17 @@ export class UpdateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.form.contents=this.items  
-    this.Jarwis.content(this.form).subscribe(
-      data => this.handleResponse(data),
-        error => this.handleError(error)
-   );
-   this.disabled=true;
-    this.sav= 'Updating';
+   console.log(this.orderForm.value ) 
+  //   this.Jarwis.content(this.form).subscribe(
+  //     data => this.handleResponse(data),
+  //       error => this.handleError(error)
+  //  );
+  //  this.disabled=true;
+    // this.sav= 'Updating';
   }
   handleError(error: any): void {
-    this.disabled=false;
-    this.sav= 'Update';
+    // this.disabled=false;
+    // this.sav= 'Update';
   }
 
   

@@ -18,7 +18,8 @@ export class MypostComponent implements OnInit {
   actname: any;
   title: any;
   id: '';
-
+  contentres: any;
+res:any;
   constructor(
               private Auth: AuthService,
               private router: Router,
@@ -31,25 +32,22 @@ export class MypostComponent implements OnInit {
  
  
   ngOnInit() {
-    this.Jarwis.profile().subscribe(
-      data=>{   
-      this.response = data;    
-    
-      this.id=this.response.id
-      console.log(this.id)
-   
-    })
-    // console.log(this.id)
     this.Jarwis.getUtitles().subscribe(data=>{
       this.response = data;
-      console.log("resp", this.response);
+      // console.log("resp", this.response);
       this.actname=this.response.title[0]
       this.title=this.response.title
       this.cat=this.response.cat
       // this.id4=this.resnh.id
-      console.log(this.title)
-      console.log(this.response)
+      // console.log(this.title)
+      // console.log(this.response)
    
+    })
+  
+    this.Jarwis.getUcontent().subscribe(data=>{
+      this.res = data;
+      this.contentres =this.res.ucontents
+      
     })
   
   }

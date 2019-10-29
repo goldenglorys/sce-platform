@@ -21,6 +21,7 @@ Route::group([
 });
 Route::get('gettitles/{id}','DisplayController@gettitles');
 Route::get('getUtitles','DisplayController@getUtitles');
+Route::get('getUcontent','DisplayController@getUContent');
 Route::post('comment','CommentController@store');
 Route::post('me','AuthController@updateprofile');
 Route::get('roleuser', 'RoleController@roleuser');
@@ -40,6 +41,7 @@ Route::get('displaynews','DisplayController@displaynews');
 Route::get('displaylocation','DisplayController@displaylocation');
 
 Route::get('getcontent/{id}','ContentController@getcontent');
+Route::get('getcontentonly/{id}','ContentController@getcontentonly');
 Route::get('getalltitle','DisplayController@getalltitle');
 Route::get('getfootertitle','DisplayController@getfootertitle');
 Route::get('search/{searchTerm}','DisplayController@search');
