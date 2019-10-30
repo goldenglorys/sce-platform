@@ -41,6 +41,7 @@ Route::get('displaynews','DisplayController@displaynews');
 Route::get('displaylocation','DisplayController@displaylocation');
 
 Route::get('getcontent/{id}','ContentController@getcontent');
+Route::post('updatecontent','ContentController@update');
 Route::get('getcontentonly/{id}','ContentController@getcontentonly');
 Route::get('getalltitle','DisplayController@getalltitle');
 Route::get('getfootertitle','DisplayController@getfootertitle');

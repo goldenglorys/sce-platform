@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JarwisService } from 'src/app/service/jarwis.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -42,7 +42,8 @@ export class UpdateComponent implements OnInit {
       marker: google.maps.Marker;
       error: any;
       cat: any;
-      result: Object;
+      result: any;
+      initcontent:any;
   bio: any;
   location: any;
 
@@ -78,87 +79,59 @@ export class UpdateComponent implements OnInit {
     }
   }
 
+  
   ngOnInit() {
     this.orderForm =  this.formBuilder.group({
-      header: '',
-      content: '',
+      gcontents: this.formBuilder.array([
+        // {
+        //   header:'',
+        //   content: ''
+        // }
+      ])
       // list: '',
       // c_image:''
     });
     
-console.log(this.orderForm.value)
+
     this.actRoute.paramMap.subscribe((params => {  
       
       var id= this.actRoute.snapshot.params['id'];
       // id = data[x].id;  
-
-      if(typeof params.get('id') == 'string') {         
-        
-        this.Jarwis.getalltitle().subscribe(data=>{
-            for(let x in data){
-              data[x]              
-              if(data[x].name_title==params.get('id') || data[x].location==params.get('id')){
-                this.detail = data[x];                
-                id = data[x].id;
-                
-                    this.Jarwis.getcontent(id).subscribe(data=>{
-                    this.response = data;
-                   
-                    this.res=this.response.name[0];
-                    this.actname=this.res.actname;
-                    this.catname=this.res.catname;                    
-                    this.title=this.res.name_title;
-                    this.about=this.res.about;
-                    this.dates=this.res.created_at;
-                    this.bio=this.res.familybackground;
-                    this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
-                   
-                    this.contents=this.response.content
-                    this.comment=this.response.comment                    
-                    this.orderForm =  this.formBuilder.group({
-                      header: '',
-                      content: this.contents,
-                      // list: '',
-                      // c_image:''
-                    });
-                    this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                    this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
-                     
-                    })
-                
-              }
-
-              else {            
-              
-          
-                // var id = params.get('id');
-                this.Jarwis.getcontent(id).subscribe(data=>{
-                  this.response = data;
-                  console.log(this.response)
-                  this.res=this.response.name[0];
-                  this.actname=this.res.actname;
-                  this.catname=this.res.catname;
-                  this.location=this.res.location;                  
-                  this.title=this.res.name_title;
-                  this.about=this.res.about;
-                  this.dates=this.res.created_at;
-                  // this.cat=this.response.name
-                  this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
-                  // console.log(this.cat)
-                  this.contents=this.response.content
-                  console.log(this.contents);
-                  this.comment=this.response.comment
-                
-                  this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-                  this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
-                   
-                  })
-              }
-
-            }
-          })
-          
+      this.Jarwis.getcontent(id).subscribe(data=>{
+        this.response = data;
+        console.log(this.response)
+        this.res=this.response.name[0];
+        this.actname=this.res.actname;
+        this.catname=this.res.catname;
+        this.location=this.res.location;                  
+        this.title=this.res.name_title;
+        this.about=this.res.about;
+        this.dates=this.res.created_at;
+        // this.cat=this.response.name
+        this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
+        // console.log(this.cat)
+        this.contents=this.response.content
+        console.log(this.contents);
+        this.comment=this.response.comment
+        for (let i in this.contents){
+          // console.log('here')
+          const control = <FormArray>this.orderForm.controls['gcontents'];
+          const contentCtrl = this.formBuilder.group({
+            header:  this.contents[i].header,
+            content: this.contents[i].content,
+            id:this.contents[i].id        
+            });
+          control.push(contentCtrl);
         }
+        let val=this.orderForm.value;
+       this.result=val.gcontents;
+       console.log(this.result)
+        console.log(this.orderForm.value)
+        this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
+        this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
+         
+        })
+      
 
         
     // this.Jarwis.productdetail2(id).subscribe(data=>{
@@ -170,11 +143,12 @@ console.log(this.orderForm.value)
   }
 
   onSubmit() {
-   console.log(this.orderForm.value ) 
-  //   this.Jarwis.content(this.form).subscribe(
-  //     data => this.handleResponse(data),
-  //       error => this.handleError(error)
-  //  );
+    
+   console.log(this.orderForm.value) 
+    this.Jarwis.updatecontent(this.orderForm.value).subscribe(
+      data => this.handleResponse(data),
+        error => this.handleError(error)
+   );
   //  this.disabled=true;
     // this.sav= 'Updating';
   }
@@ -186,7 +160,7 @@ console.log(this.orderForm.value)
   
   
   handleResponse(data) {    
-    let snackBarRef = this.snackBar.open('Save Successfully', 'Dismiss', {
+    let snackBarRef = this.snackBar.open('Update Successfully', 'Dismiss', {
       duration: 2000
     })
    this.disabled=true;

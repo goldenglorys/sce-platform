@@ -17,6 +17,9 @@ export class JarwisService {
   signup(data) {
     return this.http.post(`${this.baseUrl}/signup`, data)
   }
+  updatecontent(data) {
+    return this.http.post(`${this.baseUrl}/updatecontent`, data)
+  }
   role(data) {
     return this.http.post(`${this.baseUrl}/role`, data)
   }

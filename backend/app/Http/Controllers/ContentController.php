@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Content;
 use App\ Category;
 use App\title;
@@ -121,9 +122,26 @@ class ContentController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+      
+       $detcontents= $request->gcontents;
+    
+   
+        
+    foreach ($detcontents as $item) {
+        $update = DB::table('contents')
+                    ->where([
+                        ['id','=',$item['id']]
+                    ])
+                    ->update(array('header' => $item['header'], 'content' => $item['content']));
+    
+    }
+    if($update){
+        return '
+            "success":"true"
+        ';
+    }
     }
 
    
