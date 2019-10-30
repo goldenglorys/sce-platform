@@ -27,6 +27,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'â€‹;
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatTabsModule} from '@angular/material/tabs';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PopulationComponent } from './admin/population/population.component';
 import { UsersComponent } from './admin/users/users.component';
@@ -68,6 +69,7 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component'â
     HttpClientModule,
     MatSelectModule,
     MatInputModule,
+    MatTabsModule,
     MatListModule,
     MatSnackBarModule,
 

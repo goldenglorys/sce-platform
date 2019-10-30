@@ -46,12 +46,13 @@ contents:null,
  
   onSubmit() {
     this.form.contents=this.items  
-    this.Jarwis.content(this.form).subscribe(
-      data => this.handleResponse(data),
-        error => this.handleError(error)
-   );
-   this.disabled=true;
-    this.sav= 'Posting';
+    console.log(this.form)
+  //   this.Jarwis.content(this.form).subscribe(
+  //     data => this.handleResponse(data),
+  //       error => this.handleError(error)
+  //  );
+  //  this.disabled=true;
+  //   this.sav= 'Posting';
   }
   handleError(error: any): void {
     this.disabled=false;
