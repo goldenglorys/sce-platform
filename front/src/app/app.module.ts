@@ -33,6 +33,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { SettingsComponent } from './admin/settings/settings.component';
 import { UpdateComponent } from './user/update/update.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component'​;
+import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 
 
 @NgModule({
@@ -70,6 +71,9 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component'�
     MatInputModule,
     MatListModule,
     MatSnackBarModule,
+    LazyLoadImageModule.forRoot({
+      preset: scrollPreset 
+    }),
 
     MatAutocompleteModule​,
     MatFormFieldModule,

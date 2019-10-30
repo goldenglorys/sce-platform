@@ -22,6 +22,11 @@ export class HomeComponent implements OnInit {
   filteredStreets: Observable<string[]>;
    @ViewChild('map') mapElement: any;
    map: google.maps.Map;
+
+   uimage: string;
+    defaultImage = 'assets/img/logo.png';
+    image = 'https://images.unsplash.com/photo-1443890923422-7819ed4101c0?fm=jpg';
+  
   
 
   public valToSearch;
@@ -63,6 +68,7 @@ export class HomeComponent implements OnInit {
   id3: any;
   id4: any;
   id5: any;
+  
   constructor(private Jarwis: JarwisService,private router: Router,private mapserver: MapServiceService, private coordGet: MapServiceService) { }
 
   public lat;
@@ -98,9 +104,12 @@ export class HomeComponent implements OnInit {
         //this is one category which is event
         this.reseh=this.rese.event[0]
         this.actname=this.reseh.actname
-        this.id=this.reseh.id
+        this.id=this.reseh.id 
         //this is all subcat under event category
         this.resec=this.rese.subevent
+
+        this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.resec.image;
+
       
         
         }

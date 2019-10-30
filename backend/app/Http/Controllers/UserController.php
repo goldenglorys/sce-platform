@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\title;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -89,5 +90,11 @@ class UserController extends Controller
             }';
         }
     }
-  
+    public function getAllPost()
+    {
+        $post = DB::select('select count(id) as "all_post", (select COUNT(id) from titles where status = "N") as "pending", 
+        (select COUNT(id) from titles where status = "Y") as "approved",(select COUNT(id) from titles where status = "E") as "editted" from titles');
+      return $post;
+
+    }
 }

@@ -53,6 +53,7 @@ Route::get('titlerates','UserController@getRatesforTitle');
 Route::get('titlecomment','UserController@getcommentforTitle');
 Route::post('addview','UserController@addview');
 Route::post('updatePost','UserController@updatepost');
+Route::get('getAllPost','UserController@getAllPost');
 
 //  Route::get('test',function(){rolecate
 //      return response()->json([
