@@ -49,8 +49,45 @@ class UserController extends Controller
      $comment =DB::table('comment_tb')->select(DB::raw('count(comment) AS number_of_comment'), 'comment','title_id')->groupBy('title_id','comment')->get();
      return $comment;
     }
-    public function getAll()
+    public function updatepost(Request $request)
     {
-
+        $post = DB::table('contents')->where('contents.title_id','=',$request->name_id)
+        ->update(array(
+            'header'=> $request->header,
+            'content' => $request->content
+        )
+        );
+        if($post){
+            return '{
+                "success":true,
+                "message":"successful"
+            }' ;
+        } else {
+            return '{
+                "success":false,
+                "message":"Failed"
+            }';
+        }
     }
+
+    public function addview(Request $request){
+        $view = DB::table('titles')->select('views')->where('id','=',$request)->get();
+        $addview = DB::table('titles')->where('id','=',$request)
+        ->update(array(
+            'views'=> $view[0]->views+1
+        )
+        );
+        if($addview){
+            return '{
+                "success":true,
+                "message":"successful"
+            }' ;
+        } else {
+              return '{
+                "success":false,
+                "message":"Failed"
+            }';
+        }
+    }
+  
 }
