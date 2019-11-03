@@ -177,8 +177,7 @@ class DisplayController extends Controller
         $id=auth()->user()->id;
         // return $id;
         return response()->json([
-          
-               'ucontents'=> content::orderBy('id','desc')  ->join('titles','contents.name_id','=','titles.id')
+           'ucontents'=> content::orderBy('id','desc')  ->join('titles','contents.name_id','=','titles.id')
                ->join('categories','titles.category_id','=','categories.id')
                 ->join('users','titles.user_id','=','users.id')
             ->select('contents.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename')

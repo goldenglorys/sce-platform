@@ -28,7 +28,7 @@ import { ContactComponent } from './contact/contact.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'​;
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UpdateComponent } from './user/update/update.component';
-import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+// import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PopulationComponent } from './population/population.component';
 import { EditComponent } from './edit/edit.component';
@@ -67,9 +67,9 @@ import { EditComponent } from './edit/edit.component';
     MatInputModule,
     MatListModule,
     MatSnackBarModule,
-    LazyLoadImageModule.forRoot({
-      preset: scrollPreset 
-    }),
+    // LazyLoadImageModule.forRoot({
+    //   preset: scrollPreset 
+    // }),
 
     MatAutocompleteModule​,
     MatFormFieldModule,
