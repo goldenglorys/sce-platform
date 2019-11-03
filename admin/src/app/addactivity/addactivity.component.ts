@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { JarwisService } from '../service/jarwis.service';
+
 @Component({
-  selector: 'app-addcategory',
-  templateUrl: './addcategory.component.html',
-  styleUrls: ['./addcategory.component.css']
+  selector: 'app-addactivity',
+  templateUrl: './addactivity.component.html',
+  styleUrls: ['./addactivity.component.css']
 })
-export class AddcategoryComponent implements OnInit {
+export class AddactivityComponent implements OnInit {
+
   public form = {
     catname: null,
     destription:null,
@@ -14,7 +16,6 @@ export class AddcategoryComponent implements OnInit {
   public res:any;
   message: any;
   error: any;
-  catres: any;
   constructor(private Jarwis: JarwisService,) { }
 
 
@@ -40,15 +41,7 @@ export class AddcategoryComponent implements OnInit {
       // console.log(data);
       this.res = data;  
       // this.roleid=this.res[0]
-      }
-    )
-
-    this.Jarwis.getcat().subscribe(
-      data=>{
-      // console.log(data);
-      this.catres = data;  
-      // this.roleid=this.res[0]
-      console.log(this.catres)
+      console.log(this.res)
       }
     )
     

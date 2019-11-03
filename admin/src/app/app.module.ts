@@ -32,6 +32,7 @@ import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PopulationComponent } from './population/population.component';
 import { EditComponent } from './edit/edit.component';
+import { AddactivityComponent } from './addactivity/addactivity.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { EditComponent } from './edit/edit.component';
     UpdateComponent,
     DashboardComponent,
     PopulationComponent,
-    EditComponent
+    EditComponent,
+    AddactivityComponent
   ],
   imports: [
     BrowserModule,

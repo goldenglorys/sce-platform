@@ -8,6 +8,7 @@ import { SigninComponent } from './signin/signin.component';
 import { BeforeLoginService } from './service/before-login.service';
 import { AfterLoginService } from './service/after-login.service';
 
+import { AddactivityComponent } from './addactivity/addactivity.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'Category/:id', component: CategoryComponent},
   {path: 'Content/:id', component: ContentComponent },
   {path: 'addcat', component:  AddcategoryComponent },
+  {path: 'addact', component:  AddactivityComponent },
   {path: 'About', component:  AboutComponent },
   {path: 'Contact', component:  ContactComponent },
 
