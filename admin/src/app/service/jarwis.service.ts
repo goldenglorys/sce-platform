@@ -26,7 +26,9 @@ export class JarwisService {
   cate(data) {
     return this.http.post<any>(`${this.baseUrl}/cate`, data)
   }
-  
+  updatelive(data) {
+    return this.http.post(`${this.baseUrl}/updatelive`, data)
+  }
   content(data) {
     return this.http.post<any>(`${this.baseUrl}/content`, data,{headers:{
       Authorization:`Bearer ${localStorage.token}`

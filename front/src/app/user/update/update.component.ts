@@ -46,6 +46,7 @@ export class UpdateComponent implements OnInit {
       initcontent:any;
   bio: any;
   location: any;
+  paramsid: any;
 
   constructor(private Jarwis: JarwisService, private router: Router, public actRoute: ActivatedRoute,  private formBuilder: FormBuilder,public snackBar: MatSnackBar ) { }
 
@@ -95,9 +96,9 @@ export class UpdateComponent implements OnInit {
 
     this.actRoute.paramMap.subscribe((params => {  
       
-      var id= this.actRoute.snapshot.params['id'];
+      this.paramsid= this.actRoute.snapshot.params['id'];
       // id = data[x].id;  
-      this.Jarwis.getcontent(id).subscribe(data=>{
+      this.Jarwis.getcontent(this.paramsid).subscribe(data=>{
         this.response = data;
         console.log(this.response)
         this.res=this.response.name[0];
@@ -145,12 +146,12 @@ export class UpdateComponent implements OnInit {
   onSubmit() {
     
    console.log(this.orderForm.value) 
-    this.Jarwis.updatecontent(this.orderForm.value).subscribe(
+    this.Jarwis.updatecontent({fdata:this.orderForm.value,id:this.paramsid}).subscribe(
       data => this.handleResponse(data),
         error => this.handleError(error)
    );
-  //  this.disabled=true;
-    // this.sav= 'Updating';
+   this.disabled=true;
+    this.sav= 'Updating';
   }
   handleError(error: any): void {
     // this.disabled=false;
@@ -164,7 +165,7 @@ export class UpdateComponent implements OnInit {
       duration: 2000
     })
    this.disabled=true;
-    this.router.navigateByUrl('/User/(side:Details)');
+    this.router.navigateByUrl('/User/(side:Mypost)');
   }
 
 }
