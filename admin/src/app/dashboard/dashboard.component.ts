@@ -10,8 +10,9 @@ import { TokenService } from '../service/token.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  res: Object;
-  response: Object;
+  res: any;
+  response: any;
+ 
 
   constructor(
     private Auth: AuthService,

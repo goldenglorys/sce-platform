@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 )
 export class JarwisService {
 
-  // private baseUrl = 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api';
+  private baseUrl = 'https://sce-ogun.sabiogun.jtcheck.com/backend/public/api';
 
-  private baseUrl = 'http://localhost/sce-platform/backend/public/api';
+  // private baseUrl = 'http://localhost/sce-platform/backend/public/api';
 
   constructor(private http: HttpClient) { }
   roleuser() {
@@ -41,10 +41,10 @@ export class JarwisService {
     return this.http.post<any>(`${this.baseUrl}/login`, data)
   }
   getact() {
-    return this.http.get(`${this.baseUrl}/getact`,)
+    return this.http.get<any>(`${this.baseUrl}/getact`,)
   }
   profile() {
-    return this.http.get(`${this.baseUrl}/me`,{headers:{
+    return this.http.get<any>(`${this.baseUrl}/me`,{headers:{
       Authorization:`Bearer ${localStorage.token}`
     }})
   }
@@ -92,9 +92,18 @@ export class JarwisService {
     return this.http.get<any>(`${this.baseUrl}/gettitles/${id}`)
   }
   getUtitles() {
-    return this.http.get<any>(`${this.baseUrl}/getUtitles`,{headers:{
+    return this.http.get(`${this.baseUrl}/getUtitles`,{headers:{
       Authorization:`Bearer ${localStorage.token}`
     }})
+  }
+  getUcontent() {
+    return this.http.get(`${this.baseUrl}/getUcontent`,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
+  }
+
+  updatecontent(data) {
+    return this.http.post(`${this.baseUrl}/updatecontent`, data)
   }
 //  search(searchTerm:string) {
 //     return this.http.get(`${this.baseUrl}/getalltitle/${searchTerm}`)

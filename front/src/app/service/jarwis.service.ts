@@ -17,6 +17,9 @@ export class JarwisService {
   signup(data) {
     return this.http.post(`${this.baseUrl}/signup`, data)
   }
+  updatecontent(data) {
+    return this.http.post(`${this.baseUrl}/updatecontent`, data)
+  }
   role(data) {
     return this.http.post(`${this.baseUrl}/role`, data)
   }
@@ -82,6 +85,9 @@ export class JarwisService {
   getcontent(id:string) {
     return this.http.get(`${this.baseUrl}/getcontent/${id}`)
   }
+  getcontentonly(id:string) {
+    return this.http.get(`${this.baseUrl}/getcontentonly/${id}`)
+  }
   getalltitle() {
     return this.http.get(`${this.baseUrl}/getalltitle`,)
   }
@@ -93,6 +99,11 @@ export class JarwisService {
   }
   getUtitles() {
     return this.http.get(`${this.baseUrl}/getUtitles`,{headers:{
+      Authorization:`Bearer ${localStorage.token}`
+    }})
+  }
+  getUcontent() {
+    return this.http.get(`${this.baseUrl}/getUcontent`,{headers:{
       Authorization:`Bearer ${localStorage.token}`
     }})
   }

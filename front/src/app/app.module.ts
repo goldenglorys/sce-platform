@@ -27,6 +27,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'​;
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatTabsModule} from '@angular/material/tabs';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PopulationComponent } from './admin/population/population.component';
 import { UsersComponent } from './admin/users/users.component';
@@ -69,6 +70,7 @@ import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
     HttpClientModule,
     MatSelectModule,
     MatInputModule,
+    MatTabsModule,
     MatListModule,
     MatSnackBarModule,
     LazyLoadImageModule.forRoot({

@@ -13,6 +13,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PopulationComponent } from './population/population.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
 
@@ -23,6 +24,7 @@ const routes: Routes = [
 
   {path: 'dashboard', component: DashboardComponent,canActivate: [AfterLoginService] },
   {path: 'population/:id', component: PopulationComponent,canActivate: [AfterLoginService] },
+  {path: 'edit/:id', component: EditComponent,canActivate: [AfterLoginService] },
 
   
   {path: 'Category/:id', component: CategoryComponent},

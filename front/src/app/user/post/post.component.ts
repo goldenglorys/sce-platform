@@ -46,6 +46,7 @@ contents:null,
  
   onSubmit() {
     this.form.contents=this.items  
+    // console.log(this.form)
     this.Jarwis.content(this.form).subscribe(
       data => this.handleResponse(data),
         error => this.handleError(error)
