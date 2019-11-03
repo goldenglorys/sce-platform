@@ -197,7 +197,11 @@
   <button type="submit" (click)="onSubmit()" [disabled]= "disabled" class="btn btn-default large" id="account-submit">
           <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> {{sav}}</button>
 </div><!-- /.form-group -->                                   
-
+<div class="form-group center">
+  <button type="submit" (click)="onSubmit2()"  class="btn btn-default large" id="account-submit">
+          <!-- <i id="loader2" *ngIf="disabled"  class="fa fa-spin fa-spinner"></i> -->
+           Live</button>
+</div>
 <!-- <figure class="note block">By clicking the “Proceed to Payment” or “Submit” button you agree with our <a href="terms-conditions.html">Terms and conditions</a></figure> -->
 </div>
 </div>

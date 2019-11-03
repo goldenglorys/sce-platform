@@ -21,6 +21,7 @@ class CreateTitlesTable extends Migration
             $table->string('about');
             $table->string('rate')->nullable();
             $table->string('views')->nullable();
+            $table->string('status');
             $table->string('user_id');
             $table->string('category_id');
           

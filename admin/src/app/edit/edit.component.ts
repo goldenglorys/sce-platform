@@ -46,6 +46,8 @@ export class EditComponent implements OnInit {
       initcontent:any;
   bio: any;
   location: any;
+  paramsid: any;
+ 
 
   constructor(private Jarwis: JarwisService, private router: Router, public actRoute: ActivatedRoute,  private formBuilder: FormBuilder,public snackBar: MatSnackBar ) { }
 
@@ -93,79 +95,105 @@ export class EditComponent implements OnInit {
     });
     
 
-    this.actRoute.paramMap.subscribe((params => {  
+   
+  this.actRoute.paramMap.subscribe((params => {  
       
-      var id= this.actRoute.snapshot.params['id'];
-      // id = data[x].id;  
-      this.Jarwis.getcontent(id).subscribe(data=>{
-        this.response = data;
-        console.log(this.response)
-        this.res=this.response.name[0];
-        this.actname=this.res.actname;
-        this.catname=this.res.catname;
-        this.location=this.res.location;                  
-        this.title=this.res.name_title;
-        this.about=this.res.about;
-        this.dates=this.res.created_at;
-        // this.cat=this.response.name
-        this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
-        // console.log(this.cat)
-        this.contents=this.response.content
-        console.log(this.contents);
-        this.comment=this.response.comment
-        for (let i in this.contents){
-          // console.log('here')
-          const control = <FormArray>this.orderForm.controls['gcontents'];
-          const contentCtrl = this.formBuilder.group({
-            header:  this.contents[i].header,
-            content: this.contents[i].content,
-            id:this.contents[i].id        
-            });
-          control.push(contentCtrl);
-        }
-        let val=this.orderForm.value;
-       this.result=val.gcontents;
-       console.log(this.result)
-        console.log(this.orderForm.value)
-        this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
-        this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
-         
-        })
+    this.paramsid= this.actRoute.snapshot.params['id'];
+   // id = data[x].id;  
+   this.Jarwis.getcontent(this.paramsid).subscribe(data=>{
+     this.response = data;
+     console.log(this.response)
+     this.res=this.response.name[0];
+     this.actname=this.res.actname;
+     this.catname=this.res.catname;
+     this.location=this.res.location;                  
+     this.title=this.res.name_title;
+     this.about=this.res.about;
+     this.dates=this.res.created_at;
+     // this.cat=this.response.name
+     this.name=this.res.firstname+" "+this.res.lastname+" "+this.res.middlename
+     // console.log(this.cat)
+     this.contents=this.response.content
+     // console.log(this.contents);
+     this.comment=this.response.comment
+     for (let i in this.contents){
+       // console.log('here')
+       const control = <FormArray>this.orderForm.controls['gcontents'];
+       const contentCtrl = this.formBuilder.group({
+         header:  this.contents[i].header,
+         content: this.contents[i].content,
+         id:this.contents[i].id        
+         });
+       control.push(contentCtrl);
+     }
+     let val=this.orderForm.value;
+    this.result=val.gcontents;
+   //  console.log(this.result)
+     // console.log(this.orderForm.value)
+     this.image='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.t_image
+     this.uimage='https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/'+this.res.image;
       
+     })
+   
 
-        
-    // this.Jarwis.productdetail2(id).subscribe(data=>{
-    //   this.response2 = data;
      
-
-   }));
-    
-  }
-
-  onSubmit() {
-    
-   console.log(this.orderForm.value) 
-    this.Jarwis.updatecontent(this.orderForm.value).subscribe(
-      data => this.handleResponse(data),
-        error => this.handleError(error)
-   );
-   this.disabled=true;
-    this.sav= 'Updating';
-  }
-
-  handleError(error: any): void {
-    this.disabled=false;
-    this.sav= 'Update';
-  }  
+ // this.Jarwis.productdetail2(id).subscribe(data=>{
+ //   this.response2 = data;
   
-  handleResponse(data) {    
-    let snackBarRef = this.snackBar.open('Update Successfully', 'Dismiss', {
-      duration: 2000
-    })
-   this.disabled=false;
-    this.router.navigateByUrl('/admin');
-    this.ngOnInit()
-  }
 
+}));
+ 
+}
+
+onSubmit() {
+ // console.log(this.paramsid)
+//  console.log(this.orderForm.value) 
+ this.Jarwis.updatecontent({fdata:this.orderForm.value,id:this.paramsid}).subscribe(
+   data => this.handleResp(data),
+     error => this.handleErr(error)
+);
+this.disabled=true;
+ this.sav= 'Updating';
+}
+handleErr(error: any): void {
+ this.disabled=false;
+ this.sav= 'Update';
+}
+
+
+
+handleResp(data) {    
+ let snackBarRef = this.snackBar.open('Update Successfully', 'Dismiss', {
+   duration: 2000
+ })
+this.disabled=true;
+this.router.navigateByUrl('/admin');
+//  this.router.navigateByUrl('/User/(side:Details)');
+}
+onSubmit2() {
+   console.log(this.paramsid)
+ //  console.log(this.orderForm.value) 
+  this.Jarwis.updatelive({id:this.paramsid}).subscribe(
+    data => this.handleResponse(data),
+      error => this.handleError(error)
+ );
+//  this.disabled=true;
+//   this.sav= 'Updating';
+ }
+ handleError(error: any): void {
+  // this.disabled=false;
+  // this.sav= 'Update';
+ }
+ 
+ 
+ 
+ handleResponse(data) {    
+  let snackBarRef = this.snackBar.open('Successfully', 'Dismiss', {
+    duration: 2000
+  })
+//  this.disabled=true;
+ this.router.navigateByUrl('/admin');
+ //  this.router.navigateByUrl('/User/(side:Details)');
+ }
 
 }
