@@ -27,15 +27,7 @@
                 <ul id="goto-menu" class="list-wrapper pd-lr-10">
                   <li> <a href="#form-basic"> <span class="menu-icon"><i class=" fa fa-th-list"></i></span> <span class="menu-text">Form Basic</span> </a> </li>
                   <li> <a href="#advanced-input"> <span class="menu-icon"><i class=" fa  fa-files-o"></i></span> <span class="menu-text">Advanced Input</span> </a> </li>
-                  <li> <a href="#auto-complete-input"> <span class="menu-icon"><i class=" fa  fa-list-alt"></i></span> <span class="menu-text">Auto Complete Input</span> </a> </li>
-                  <li> <a href="#switch-input"> <span class="menu-icon"><i class=" fa  fa-adjust"></i></span> <span class="menu-text">Switch Input</span> </a> </li>
-                  <li> <a href="#date-input"> <span class="menu-icon"><i class=" fa  fa-calendar"></i></span> <span class="menu-text">Date Input</span> </a> </li>
-                  <li> <a href="#bootstrap-date"> <span class="menu-icon"><i class=" fa  fa-calendar-o"></i></span> <span class="menu-text">Bootstrap DateRange Picker</span> </a> </li>
-                  <li> <a href="#bootstrap-time"> <span class="menu-icon"><i class=" fa  fa-clock-o"></i></span> <span class="menu-text">Bootstrap Time Picker</span> </a> </li>
-                  <li> <a href="#color-pickers"> <span class="menu-icon"><i class=" fa  fa-flask"></i></span> <span class="menu-text">Color Picker</span> </a> </li>
-                  <li> <a href="#ck-editor"> <span class="menu-icon"><i class="fa  fa fa-pencil"></i></span> <span class="menu-text">CK Editor</span> </a> </li>
-                  <li> <a href="#html5-editor"> <span class="menu-icon"><i class="fa  fa-bolt"></i></span> <span class="menu-text">Wysiwyg HTML 5</span> </a> </li>
-                  <li> <a href="#file-upload"> <span class="menu-icon"><i class=" fa  fa-cloud-upload"></i></span> <span class="menu-text">File Upload</span> </a> </li>
+                  
                 </ul>
               </div>
               <!-- content-list --> 
@@ -67,15 +59,20 @@
                           <div class="content-list content-blog-large">
                             <ul class="list-wrapper">
                               <li>
-                                <div class="menu-icon"> <img alt="example image" [src]="image"> </div>
+                                <div class="menu-icon"> 
+                                  <!-- <img alt="example image" [src]="image">  -->
+                                  <img src="blank.gif" class="lazy" data-src="/images/full-size.jpg" [src]="image" width="240" height="152">
+                                
+                                </div>
                                 <div class="menu-text">
                                   <h2 class="blog-title font-bold letter-xs"><a href="#"> {{title}}</a></h2>
                                   <div class="menu-info">
                                     <div class="menu-date font-xs">{{dates}}</div>
                                   </div>
-                                  <div class="menu-tags  mgbt-xs-15"> Tags: <a href="#"><span class="label vd_bg-yellow">Sports</span></a> <a href="#"><span class="label vd_bg-yellow">Hobby</span></a> <a href="#"><span class="label vd_bg-yellow">Blogs</span></a> <a href="#"><span class="label vd_bg-yellow">Journal</span></a> </div>
+                                  <!-- <div class="menu-tags  mgbt-xs-15"> Tags: <a href="#"><span class="label vd_bg-yellow">Sports</span></a> <a href="#"><span class="label vd_bg-yellow">Hobby</span></a> <a href="#"><span class="label vd_bg-yellow">Blogs</span></a> <a href="#"><span class="label vd_bg-yellow">Journal</span></a> </div>
                                   <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore...</p>
-                                  <a class="btn vd_btn vd_bg-green btn-sm" href="#">Read More</a> </div>
+                                  <a class="btn vd_btn vd_bg-green btn-sm" href="#">Read More</a> -->
+                                 </div>
                               </li>                              
                             </ul>
                           </div>
@@ -90,24 +87,15 @@
                       <div class="panel widget light-widget panel-bd-top vd_bdt-yellow">
                         <div class="panel-heading no-title"> </div>
                         <div class="panel-body">
-                          <h3 class="mgtp--5"> Medium Size for Sidebar</h3>
+                          <h3 class="mgtp--5">Comment(s)</h3>
                           <div class="content-list content-image">
-                            <ul class="list-wrapper no-bd-btm">
+                            <ul class="list-wrapper no-bd-btm" *ngFor="let r of comment">
                               <li> <a href="#">
-                                <div class="menu-icon"><img src="assets/img/blog/01-square.jpg" alt="example image"></div>
+                                <div class="menu-icon"><img src="https://sce-ogun.sabiogun.jtcheck.com/backend/public/upload/uploads/{{r.image}}" alt="example image"></div>
                                 <div class="menu-text pd-5">
-                                  <h5 class="mgbt-xs-0">Blog Sidebar Title</h5>
+                                  <h5 class="mgbt-xs-0">{{r.firstname}} {{r.lastname}} {{r.middlename}}</h5>
                                   <div class="menu-info">
-                                    <div class="menu-date font-xs">Posted: January 10th, 1987 </div>
-                                  </div>
-                                </div>
-                                </a> </li>
-                              <li> <a href="#">
-                                <div class="menu-icon"><img src="assets/img/blog/02-square.jpg" alt="example image"></div>
-                                <div class="menu-text pd-5">
-                                  <h5 class="mgbt-xs-0">Cool Obligation</h5>
-                                  <div class="menu-info">
-                                    <div class="menu-date font-xs">Posted: February 19th, 2017 </div>
+                                    <div class="menu-date font-xs">Posted: {{r.created_at}} </div>
                                   </div>
                                 </div>
                                 </a> </li>

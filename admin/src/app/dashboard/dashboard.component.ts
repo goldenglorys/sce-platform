@@ -58,8 +58,9 @@ export class DashboardComponent implements OnInit {
   }
 
   navigate(){
+   
+    this.router.navigate(['']);
     this.ngOnInit();
-    this.router.navigate(['admin/']);
   }
 
   navigates(id){

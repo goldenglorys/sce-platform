@@ -66,13 +66,15 @@ export class HomeComponent implements OnInit {
         }
       )
 
-      this.Jarwis.displayartifact().subscribe(
+      this.Jarwis.getalladmintitle().subscribe(
         data=>{
         this.resa = data;  
-        this.resah=this.resa.event[0]
-        this.actname1=this.resah.actname
-        this.id1=this.resah.id
-        this.resac=this.resa.arti_cat
+        // this.resah=this.resa.event[0]
+        // this.actname1=this.resah.actname
+        // this.id1=this.resah.id
+        // this.resac=this.resa.arti_cat
+
+        console.log(this.resa)
        
         
      })
@@ -82,6 +84,13 @@ export class HomeComponent implements OnInit {
     // console.log(id)
    this.router.navigate(['Category/'+id+''])
   }
+  
+  navigates(id){
+    
+    this.router.navigate(['edit/'+id+'']);
+    this.ngOnInit()
+  }
+
   navigate(id){
     this.router.navigate(['Content/'+id+''])
   }

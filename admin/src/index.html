@@ -125,10 +125,121 @@
 <script type="text/javascript" src="assets/plugins/flot/jquery.flot.pie.min.js"></script>
 <script type="text/javascript" src="assets/plugins/flot/jquery.flot.categories.min.js"></script>
 
-
-
 <!-- Intro JS (Tour) -->
 <script type="text/javascript" src='assets/plugins/introjs/js/intro.min.js'></script>
+
+<script type="text/javascript" src='assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js'></script>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	"use strict";
+	
+	$('#wizard-1').bootstrapWizard({
+		'tabClass': 'nav nav-pills nav-justified',
+		'nextSelector': '.wizard .next',
+		'previousSelector': '.wizard .prev',
+		'onTabShow' : function(){
+			$('#wizard-1 .finish').hide();
+			$('#wizard-1 .next').show();
+			if ($('#wizard-1 .nav li:last-child').hasClass('active')){
+				$('#wizard-1 .next').hide();
+				$('#wizard-1 .finish').show();
+			}
+		},
+		'onNext': function(){
+			scrollTo('#wizard-1',-100);
+		},
+		'onPrevious': function(){
+			scrollTo('#wizard-1',-100);
+		}	
+	});
+	$('#wizard-2').bootstrapWizard({
+		'tabClass': 'nav nav-pills nav-justified',
+		'nextSelector': '.wizard .next',
+		'previousSelector': '.wizard .prev',
+		'onTabShow' :  function(tab, navigation, index){
+			$('#wizard-2 .finish').hide();
+			$('#wizard-2 .next').show();
+			if ($('#wizard-2 .nav li:last-child').hasClass('active')){
+				$('#wizard-2 .next').hide();
+				$('#wizard-2 .finish').show();
+			}
+			var $total = navigation.find('li').length;
+			var $current = index+1;
+			var $percent = ($current/$total) * 100;
+			$('#wizard-2').find('.progress-bar').css({width:$percent+'%'});			
+		},
+		'onTabClick': function(tab, navigation, index) {
+			return false;		
+		},
+		'onNext': function(){
+			scrollTo('#wizard-2',-100);
+		},
+		'onPrevious': function(){
+			scrollTo('#wizard-2',-100);
+		}		
+	});	
+	$('#wizard-3').bootstrapWizard({
+		'tabClass': 'nav nav-pills nav-justified',
+		'nextSelector': '.wizard .next',
+		'previousSelector': '.wizard .prev',
+		'onTabShow' : function(){
+			$('#wizard-3 .finish').hide();
+			$('#wizard-3 .next').show();
+			if ($('#wizard-3 .nav li:last-child').hasClass('active')){
+				$('#wizard-3 .next').hide();
+				$('#wizard-3 .finish').show();
+			}
+		},
+		'onNext': function(){
+			scrollTo('#wizard-3',-100);
+		},
+		'onPrevious': function(){
+			scrollTo('#wizard-3',-100);
+		}		
+	});	
+	$('#wizard-4').bootstrapWizard({
+		'tabClass': 'nav nav-tabs nav-stacked',
+		'nextSelector': '.wizard .next',
+		'previousSelector': '.wizard .prev',
+		'onTabShow' : function(){
+			$('#wizard-4 .finish').hide();
+			$('#wizard-4 .next').show();
+			if ($('#wizard-4 .nav li:last-child').hasClass('active')){
+				$('#wizard-4 .next').hide();
+				$('#wizard-4 .finish').show();
+			}
+		},
+		'onNext': function(){
+			scrollTo('#wizard-4',-100);
+		},
+		'onPrevious': function(){
+			scrollTo('#wizard-4',-100);
+		}		
+	});		
+	$('#wizard-5').bootstrapWizard({
+		'tabClass': 'nav nav-tabs nav-stacked',
+		'nextSelector': '.wizard .next',
+		'previousSelector': '.wizard .prev',
+		'onTabShow' : function(){
+			$('#wizard-5 .finish').hide();
+			$('#wizard-5 .next').show();
+			if ($('#wizard-5 .nav li:last-child').hasClass('active')){
+				$('#wizard-5 .next').hide();
+				$('#wizard-5 .finish').show();
+			}
+		},
+		'onNext': function(){
+			scrollTo('#wizard-5',-100);
+		},
+		'onPrevious': function(){
+			scrollTo('#wizard-5',-100);
+		}		
+	});		
+});
+</script>
+<!-- Specific Page Scripts END -->
 
 <script type="text/javascript">
 $(window).load(function() 
@@ -380,6 +491,84 @@ $(window).load(function()
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 </script> 
+
+<script>
+
+!function(window){
+  var $q = function(q, res){
+        if (document.querySelectorAll) {
+          res = document.querySelectorAll(q);
+        } else {
+          var d=document
+            , a=d.styleSheets[0] || d.createStyleSheet();
+          a.addRule(q,'f:b');
+          for(var l=d.all,b=0,c=[],f=l.length;b<f;b++)
+            l[b].currentStyle.f && c.push(l[b]);
+
+          a.removeRule(0);
+          res = c;
+        }
+        return res;
+      }
+    , addEventListener = function(evt, fn){
+        window.addEventListener
+          ? this.addEventListener(evt, fn, false)
+          : (window.attachEvent)
+            ? this.attachEvent('on' + evt, fn)
+            : this['on' + evt] = fn;
+      }
+    , _has = function(obj, key) {
+        return Object.prototype.hasOwnProperty.call(obj, key);
+      }
+    ;
+
+  function loadImage (el, fn) {
+    var img = new Image()
+      , src = el.getAttribute('data-src');
+    img.onload = function() {
+      if (!! el.parent)
+        el.parent.replaceChild(img, el)
+      else
+        el.src = src;
+
+      fn? fn() : null;
+    }
+    img.src = src;
+  }
+
+  function elementInViewport(el) {
+    var rect = el.getBoundingClientRect()
+
+    return (
+       rect.top    >= 0
+    && rect.left   >= 0
+    && rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+    )
+  }
+
+    var images = new Array()
+      , query = $q('img.lazy')
+      , processScroll = function(){
+          for (var i = 0; i < images.length; i++) {
+            if (elementInViewport(images[i])) {
+              loadImage(images[i], function () {
+                images.splice(i, i);
+              });
+            }
+          };
+        }
+      ;
+    // Array.prototype.slice.call is not callable under our lovely IE8 
+    for (var i = 0; i < query.length; i++) {
+      images.push(query[i]);
+    };
+
+    processScroll();
+    addEventListener('scroll',processScroll);
+
+}(this);
+
+</script>
 
 </body>
 

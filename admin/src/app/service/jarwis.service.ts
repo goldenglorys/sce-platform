@@ -45,6 +45,9 @@ export class JarwisService {
   getact() {
     return this.http.get<any>(`${this.baseUrl}/getact`,)
   }
+  getcat() {
+    return this.http.get<any>(`${this.baseUrl}/getcat`,)
+  }
   profile() {
     return this.http.get<any>(`${this.baseUrl}/me`,{headers:{
       Authorization:`Bearer ${localStorage.token}`
@@ -86,6 +89,9 @@ export class JarwisService {
   }
   getalltitle() {
     return this.http.get<any>(`${this.baseUrl}/getalltitle`,)
+  }
+  getalladmintitle() {
+    return this.http.get<any>(`${this.baseUrl}/getalladmintitle`,)
   }
   getfootertitle() {
     return this.http.get<any>(`${this.baseUrl}/getfootertitle`,)
