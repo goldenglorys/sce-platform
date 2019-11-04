@@ -93,6 +93,9 @@ export class JarwisService {
   gettitles(id:string) {
     return this.http.get<any>(`${this.baseUrl}/gettitles/${id}`)
   }
+  gettitlesforadmin(id:string) {
+    return this.http.get<any>(`${this.baseUrl}/gettitlesforadmin/${id}`)
+  }
   getUtitles() {
     return this.http.get(`${this.baseUrl}/getUtitles`,{headers:{
       Authorization:`Bearer ${localStorage.token}`
@@ -121,5 +124,13 @@ getAllPost(){
 }
 adminLogin(data) {
   return this.http.post(`${this.baseUrl}/adminLogin`, data)
+}
+
+deletetitle(data) {
+  return this.http.post<any>(`${this.baseUrl}/deletetitle`, data)
+}
+
+trash(data) {
+  return this.http.post<any>(`${this.baseUrl}/trash`, data)
 }
 }

@@ -164,8 +164,40 @@ class ContentController extends Controller
     //     ';
     // }
     }
-
+    public function trash(Request $request)
+    {
+        $id=$request[0];
+     
+    //  return $id;
    
+    $trash=DB::table('titles')
+    ->where('id', $id)
+    ->update(['status' =>'T']); 
+  
+     return $trash;
+    // if($update){
+    //     return '
+    //         "success":"true"
+    //     ';
+    // }
+    }
+    public function destroytitle(Request $request)
+    {
+        $id=$request[0];
+    
+        $deletet=DB::table('titles')->where('id', $id)->delete();
+        $deletec=DB::table('contents')->where('name_id', $id)->delete();
+    //     if($deletet){
+    //     return '
+    //         "success":"true"
+    //     ';
+    // }else{
+    //     return '
+    //     "danger":"false"
+    // ';
+    // }
+    return $id;
+    }
     public function destroy($id)
     {
         //

@@ -21,6 +21,7 @@ Route::group([
     
 });
 Route::get('gettitles/{id}','DisplayController@gettitles');
+Route::get('gettitlesforadmin/{id}','DisplayController@gettitlesforadmin');
 Route::get('getUtitles','DisplayController@getUtitles');
 Route::get('getUcontent','DisplayController@getUContent');
 Route::post('comment','CommentController@store');
@@ -59,12 +60,14 @@ Route::post('addview','UserController@addview');
 Route::post('updatePost','UserController@updatepost');
 Route::get('getAllPost','UserController@getAllPost');
 
+Route::post('trash','ContentController@trash');
+Route::post('deletetitle','ContentController@destroytitle');
 //  Route::get('test',function(){rolecate
 //      return response()->json([
 //          'user'=>['fname'=>'tawa',
 //          'lname'=>'adio']
 //      ]); 
-//  });
+//  }); destroytitle
 // spiral
 // waterfall model
 // SDLC SCRUM

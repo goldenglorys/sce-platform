@@ -26,6 +26,7 @@ res:any;
   Y= true;
   status3= 'E';
   show: any;
+  paramsid: any;
 
   constructor(
               private Auth: AuthService,
@@ -41,9 +42,9 @@ res:any;
   ngOnInit() {
 
     this.actRoute.paramMap.subscribe((params => {
-      let id = params.get('id');
+      this.paramsid = params.get('id');
       
-      this.Jarwis.gettitles(id).subscribe(data=>{
+      this.Jarwis.gettitlesforadmin(this.paramsid).subscribe(data=>{
         this.response = data;
         this.actname=this.response.acti[0].actname
         this.title=this.response.title
@@ -92,6 +93,28 @@ res:any;
     this.router.navigate(['Content/'+id+'']);
     this.ngOnInit()
   }
+  trash(id){
+   this.Jarwis.trash(id).subscribe(
+    data => this.handleResponse(data),
+      error => this.handleError(error)
+ );
+  }
 
-
+  handleError(error: any): void {
+   // this.disabled=false;
+   // this.sav= 'Update';
+  }
+  
+  
+  
+  handleResponse(data) { 
+    console.log(data) 
+   let snackBarRef = this.snackBar.open("Successfully move to trash", 'Dismiss', {
+    duration: 2000
+  })  
+ //  this.disabled=true;
+  // this.router.navigateByUrl('/population/'+this.paramsid+'');
+  this.ngOnInit()
+  //  this.router.navigateByUrl('/User/(side:Details)');
+  }
 }
