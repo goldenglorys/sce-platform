@@ -48,10 +48,11 @@
                   <td class="center"><span class="label label-danger" *ngIf ="t.status=== 'N'">INACTIVE</span>
                                       <span class="label label-warning" *ngIf ="t.status=== 'E'">PENDING</span>
                                       <span class="label label-success" *ngIf ="t.status=== 'Y'">LIVE</span>
-                  </td>
+                                      <span class="label label-default " *ngIf ="t.status=== 'T'">TRASH</span>
+                                    </td>
                   <td class="menu-action rounded-btn" ><a data-original-title="view" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-green"> <i class="fa fa-eye"></i> </a> 
                                                       <a data-original-title="edit" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-yellow" routerLink="" (click)="navigates(t.id)"> <i class="fa fa-pencil"></i> </a> 
-                                                      <a data-original-title="delete" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-red"> <i class="fa fa-times"></i> </a></td>
+                                                      <a data-original-title="delete" data-toggle="tooltip" data-placement="top" class="btn menu-icon vd_bg-red" (click)="trash(t.id)"> <i class="fa fa-times"></i> </a></td>
                 </tr>                
               </tbody>
             </table>
