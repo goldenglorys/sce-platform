@@ -90,6 +90,9 @@ export class JarwisService {
   getalltitle() {
     return this.http.get<any>(`${this.baseUrl}/getalltitle`,)
   }
+  getalladmintitle() {
+    return this.http.get<any>(`${this.baseUrl}/getalladmintitle`,)
+  }
   getfootertitle() {
     return this.http.get<any>(`${this.baseUrl}/getfootertitle`,)
   }

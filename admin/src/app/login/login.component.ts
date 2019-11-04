@@ -34,6 +34,10 @@ public role;
     private Auth: AuthService,
     public snackBar: MatSnackBar, 
   ) { }
+
+  ngOnInit() {  
+    
+  }
  
   onSubmit() {
       this.disabled= true;
@@ -46,6 +50,8 @@ public role;
     
   }
   handleResponse(data) {
+
+    this.ngOnInit()
     
     let snackBarRef = this.snackBar.open("Login successfully", 'Dismiss', {
       duration: 2000
@@ -53,11 +59,12 @@ public role;
     this.Token.handle(data.access_token);
    
     this.Auth.changeAuthStatus(true);
-   this.router.navigateByUrl('/admin');
-   console.log("i amm here");
-   this.disabled= false;
-   this.sav= 'Submited'
-   this.ngOnInit()
+   this.router.navigateByUrl('');
+  
+   
+  //  this.disabled= false;
+  //  this.sav= 'Submited'
+   
   }
 
   handleError(error) {
@@ -73,10 +80,7 @@ public role;
 
   }
 
-  ngOnInit() {
   
-    
-  }
 
 
 }

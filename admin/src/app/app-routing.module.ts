@@ -18,7 +18,7 @@ import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
 
-  {path: 'admin', component: HomeComponent,canActivate: [AfterLoginService]},  
+  {path: '', component: HomeComponent,canActivate: [AfterLoginService]},  
   {path: 'Login', component: LoginComponent,canActivate: [BeforeLoginService] },
   {path: 'Signin', component: SigninComponent,canActivate: [BeforeLoginService] },
 

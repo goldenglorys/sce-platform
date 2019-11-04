@@ -65,20 +65,20 @@
 
       <!-- row -->
   <div class="row">      
-      <div class="col-md-3"  *ngFor="let c of res">
+      <div class="col-md-3" *ngFor="let c of res">
         <div class="panel widget light-widget panel-bd-top vd_bdt-blue">
           <div class="panel-heading no-title"> </div>
           <div class="panel-body">
             <h3 class="mgtp--5">{{c.actname}}</h3>
             <div class="content-list content-image">
-              <ul class="list-wrapper no-bd-btm">
-        <li class="group-heading">Category</li>
-        <li *ngFor="let cr of catres">  
-            <a href="#"> 
+              <ul class="list-wrapper no-bd-btm" *ngFor="let cr of cres">
+        <!-- <li class="group-heading">Category</li> -->
+        <li *ngIf="cr.activity_id === c.id">  
+            <a href="#" > 
                     <div class="menu-icon"><img src="assets/img/avatar/avatar.jpg" alt="example image"></div> 
-                    <div class="menu-text">
+                    <div class="menu-text">{{cr.catname}}
                         <div class="menu-info">
-                            <span class="menu-date">{{cr.catname}}</span>                                                         
+                            <span class="menu-date" >{{cr.destription}}</span>                                                         
                         </div>
                     </div>
                     <div class="menu-badge"><span class="badge status vd_bg-green">&nbsp;</span></div> 

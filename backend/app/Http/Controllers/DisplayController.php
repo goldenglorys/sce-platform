@@ -117,6 +117,19 @@ class DisplayController extends Controller
         
         );
     }
+
+    public function getalladmintitle()
+    {
+        return response()->json(
+          
+                title::orderBy('id', 'desc')->join('categories','titles.category_id','=','categories.id')
+                ->join('users','titles.user_id','=','users.id')
+            ->select('titles.*','categories.catname','categories.destription','categories.activity_id','users.firstname','users.lastname','users.middlename') 
+            ->limit(10) 
+            ->get()
+        
+        );
+    }
    
     public function getfootertitle()
     {

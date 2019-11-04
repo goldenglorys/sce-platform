@@ -15,6 +15,12 @@ export class AddcategoryComponent implements OnInit {
   message: any;
   error: any;
   catres: any;
+  detail: any;
+  aid: any;
+  response: any;
+  cat: any;
+  tres: any;
+  cres: any;
   constructor(private Jarwis: JarwisService,) { }
 
 
@@ -37,20 +43,25 @@ export class AddcategoryComponent implements OnInit {
   ngOnInit() {
     this.Jarwis.getact().subscribe(
       data=>{
-      // console.log(data);
+      
       this.res = data;  
       // this.roleid=this.res[0]
-      }
-    )
 
+      console.log(this.res);
+
+      }
+    )   
+    
     this.Jarwis.getcat().subscribe(
       data=>{
-      // console.log(data);
-      this.catres = data;  
+      
+      this.cres = data;  
       // this.roleid=this.res[0]
-      console.log(this.catres)
+
+      console.log(this.tres);
+
       }
-    )
+    )   
     
   }
 

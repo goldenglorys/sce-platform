@@ -46,6 +46,7 @@ Route::post('updatecontent','ContentController@update');
 Route::post('updatelive','ContentController@updatelive');
 Route::get('getcontentonly/{id}','ContentController@getcontentonly');
 Route::get('getalltitle','DisplayController@getalltitle');
+Route::get('getalladmintitle','DisplayController@getalladmintitle');
 Route::get('getfootertitle','DisplayController@getfootertitle');
 Route::get('search/{searchTerm}','DisplayController@search');
 
