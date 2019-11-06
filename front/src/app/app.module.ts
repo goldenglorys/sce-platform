@@ -26,7 +26,15 @@ import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete'​;
-import { MatFormFieldModule } from '@angular/material/form-field'​;
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatTabsModule} from '@angular/material/tabs';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { PopulationComponent } from './admin/population/population.component';
+import { UsersComponent } from './admin/users/users.component';
+import { SettingsComponent } from './admin/settings/settings.component';
+import { UpdateComponent } from './user/update/update.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component'​;
+// import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 
 
 @NgModule({
@@ -44,7 +52,13 @@ import { MatFormFieldModule } from '@angular/material/form-field'​;
     MypostComponent,
     AddcategoryComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    DashboardComponent,
+    PopulationComponent,
+    UsersComponent,
+    SettingsComponent,
+    UpdateComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +70,12 @@ import { MatFormFieldModule } from '@angular/material/form-field'​;
     HttpClientModule,
     MatSelectModule,
     MatInputModule,
+    MatTabsModule,
     MatListModule,
     MatSnackBarModule,
+    // LazyLoadImageModule.forRoot({
+    //   preset: scrollPreset 
+    // }),
 
     MatAutocompleteModule​,
     MatFormFieldModule,

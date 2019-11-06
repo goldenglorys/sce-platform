@@ -12,6 +12,7 @@ Route::group([
 
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
+    Route::post('adminLogin','AuthController@adminLogin');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::get('me', 'AuthController@me');
@@ -20,6 +21,9 @@ Route::group([
     
 });
 Route::get('gettitles/{id}','DisplayController@gettitles');
+Route::get('gettitlesforadmin/{id}','DisplayController@gettitlesforadmin');
+Route::get('getUtitles','DisplayController@getUtitles');
+Route::get('getUcontent','DisplayController@getUContent');
 Route::post('comment','CommentController@store');
 Route::post('me','AuthController@updateprofile');
 Route::get('roleuser', 'RoleController@roleuser');
@@ -39,7 +43,11 @@ Route::get('displaynews','DisplayController@displaynews');
 Route::get('displaylocation','DisplayController@displaylocation');
 
 Route::get('getcontent/{id}','ContentController@getcontent');
+Route::post('updatecontent','ContentController@update');
+Route::post('updatelive','ContentController@updatelive');
+Route::get('getcontentonly/{id}','ContentController@getcontentonly');
 Route::get('getalltitle','DisplayController@getalltitle');
+Route::get('getalladmintitle','DisplayController@getalladmintitle');
 Route::get('getfootertitle','DisplayController@getfootertitle');
 Route::get('search/{searchTerm}','DisplayController@search');
 
@@ -49,14 +57,18 @@ Route::get('all','UserController@getAll');
 Route::get('articles','UserController@getArticle');
 Route::get('titlerates','UserController@getRatesforTitle');
 Route::get('titlecomment','UserController@getcommentforTitle');
+Route::post('addview','UserController@addview');
+Route::post('updatePost','UserController@updatepost');
+Route::get('getAllPost','UserController@getAllPost');
 
-
+Route::post('trash','ContentController@trash');
+Route::post('deletetitle','ContentController@destroytitle');
 //  Route::get('test',function(){rolecate
 //      return response()->json([
 //          'user'=>['fname'=>'tawa',
 //          'lname'=>'adio']
 //      ]); 
-//  });
+//  }); destroytitle
 // spiral
 // waterfall model
 // SDLC SCRUM

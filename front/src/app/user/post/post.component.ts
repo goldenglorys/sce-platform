@@ -27,6 +27,7 @@ t_image:null,
 contents:null,
 }
   disabled=false;
+  sav= 'Contribute';
   id: any;
   data: any;
   public orderForm: FormGroup;
@@ -45,14 +46,17 @@ contents:null,
  
   onSubmit() {
     this.form.contents=this.items  
+    // console.log(this.form)
     this.Jarwis.content(this.form).subscribe(
       data => this.handleResponse(data),
         error => this.handleError(error)
    );
    this.disabled=true;
+    this.sav= 'Posting';
   }
   handleError(error: any): void {
     this.disabled=false;
+    this.sav= 'Contribut';
   }
 
   
@@ -75,8 +79,7 @@ contents:null,
     let existingItem = this.items.filter(i => i.header==header && i.content == content)
     if(existingItem.length == 0){
       let id = this.items.length;
-      this.items.push({id: id,header: header, content: content})
-      
+      this.items.push({id: id,header: header, content: content})      
       
     }else{
       let snackBarRef = this.snackBar.open('Information already exist', 'Dismiss', {

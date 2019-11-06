@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Content;
 use App\ Category;
 use App\title;
@@ -39,7 +40,20 @@ class ContentController extends Controller
        ]
     );
     }
-
+    public function getcontentonly($id)
+    {
+        return response()->json(
+            // Activities::where('id','=',1)->get(),
+            [
+        
+       'content'=>content::orderBy('id')->join('titles','contents.name_id','=','titles.id')
+        ->select('contents.*','titles.name_title','titles.location','titles.t_image')
+       ->where('contents.id','=',$id)
+       
+       ->get()
+       ]
+    );
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -108,12 +122,82 @@ class ContentController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
-    }
-
+        $id=$request->id;
+      $fdata=$request->fdata;
+    $detcontents= $fdata['gcontents'];
+    //  return $detcontents;
    
+    $updatetitle=DB::table('titles')
+    ->where('id', $id)
+    ->update(['status' =>'E']); 
+    foreach ($detcontents as $item) {
+        $update = DB::table('contents')
+                    ->where([
+                        ['id','=',$item['id']]
+                    ])
+                    ->update(array('header' => $item['header'], 'content' => $item['content']));
+    
+    }
+    return $update;
+    // if($update){
+    //     return '
+    //         "success":"true"
+    //     ';
+    // }
+    }
+    public function updatelive(Request $request)
+    {
+  $id=$request->id;
+     
+    //  return $id;
+   
+    $updatetitle=DB::table('titles')
+    ->where('id', $id)
+    ->update(['status' =>'Y']); 
+  
+     return $updatetitle;
+    // if($update){
+    //     return '
+    //         "success":"true"
+    //     ';
+    // }
+    }
+    public function trash(Request $request)
+    {
+        $id=$request[0];
+     
+    //  return $id;
+   
+    $trash=DB::table('titles')
+    ->where('id', $id)
+    ->update(['status' =>'T']); 
+  
+     return $trash;
+    // if($update){
+    //     return '
+    //         "success":"true"
+    //     ';
+    // }
+    }
+    public function destroytitle(Request $request)
+    {
+        $id=$request[0];
+    
+        $deletet=DB::table('titles')->where('id', $id)->delete();
+        $deletec=DB::table('contents')->where('name_id', $id)->delete();
+    //     if($deletet){
+    //     return '
+    //         "success":"true"
+    //     ';
+    // }else{
+    //     return '
+    //     "danger":"false"
+    // ';
+    // }
+    return $id;
+    }
     public function destroy($id)
     {
         //

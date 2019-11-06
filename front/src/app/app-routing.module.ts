@@ -15,6 +15,9 @@ import { MypostComponent } from './user/mypost/mypost.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { UpdateComponent } from './user/update/update.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -27,10 +30,16 @@ const routes: Routes = [
          {path: 'Profile', component: ProfileComponent, outlet: 'side',canActivate: [AfterLoginService]},
          {path: 'Details', component: DetailsComponent, outlet: 'side',canActivate: [AfterLoginService] },
          {path: 'Post', component: PostComponent, outlet: 'side',canActivate: [AfterLoginService] },
-         {path: 'Mypost', component: MypostComponent, outlet: 'side' ,canActivate: [AfterLoginService]}
+         {path: 'Mypost', component: MypostComponent, outlet: 'side' ,canActivate: [AfterLoginService]},
+         {path: 'Update/:id', component: UpdateComponent, outlet: 'side' ,canActivate: [AfterLoginService]}
      ],
         },
 
+ 
+
+  {path: 'Admin', component: DashboardComponent}, 
+  {path: 'Admin/signin', component: AdminLoginComponent},
+  // {path: 'home', component: DashboardComponent },
   {path: 'Category/:id', component: CategoryComponent},
   {path: 'Content/:id', component: ContentComponent },
   {path: 'addcat', component:  AddcategoryComponent },

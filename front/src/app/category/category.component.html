@@ -17,8 +17,8 @@
                         <header><h1>{{actname}}</h1></header>
                         <section id="search-filter">
                             <figure><h3><i class="fa fa-search"></i>Search Results:</h3>
-                                <span class="search-count">28</span>
-                                <div class="sorting">
+                                <span class="search-count">{{lenght}}</span>
+                                <!-- <div class="sorting">
                                     <div class="form-group">
                                         <select name="sorting">
                                             <option value="">Sort By</option>
@@ -26,8 +26,8 @@
                                             <option value="2">Highest price first</option>
                                             <option value="3">Date added</option>
                                         </select>
-                                    </div><!-- /.form-group -->
-                                </div>
+                                    </div>
+                                </div> -->
                             </figure>
                         </section>
                         <section id="properties" class="display-lines">
@@ -36,13 +36,13 @@
                                 <figure class="type" title="Apartment"><img src="" alt=""></figure>
                                 <div class="property-image">
                                     <!-- <figure class="ribbon">In Hold</figure> -->
-                                    <a [routerLink]="['/Content', t.id]">
+                                    <a routerLink="" (click)="navigate(t.id)" >
                                         <img alt="" src="https://sabiogun.jtcheck.com/sce-ogun/backend/public/upload/uploads/{{t.t_image}}" (click)="onClick()">
                                     </a>
                                 </div>
                                 <div class="info">
                                     <header>
-                                        <a [routerLink]="['/Content', t.id]" href="property-detail.html"><h3>{{t.name_title}}</h3></a>
+                                        <a routerLink="" (click)="navigate(t.id)"><h3>{{t.name_title}}</h3></a>
                                         <figure>Location: {{t.location}}</figure>
                                     </header>
                                     <div class="tag price">{{t.catname}}</div>
@@ -60,7 +60,7 @@
                                                 <dd>2</dd>
                                         </dl> -->
                                     </aside>
-                                    <a href="property-detail.html" class="link-arrow">Read More</a>
+                                    <a routerLink="" (click)="navigate(t.id)" class="link-arrow">Read More</a>
                                 </div>
                             </div><!-- /.property -->
                             
@@ -89,47 +89,7 @@
                                         <li><a routerLink="/subCat/:c.id">{{c.catname}}</a></li>
                                         
                                     </ul>
-                                </aside><!-- /#categories -->                     
-                        <!-- <aside id="featured-properties">
-                            <header><h3>Featured Properties</h3></header>
-                            <div class="property small">
-                                <a href="property-detail.html">
-                                    <div class="property-image">
-                                        <img alt="" src="assets/img/properties/property-06.jpg">
-                                    </div>
-                                </a>
-                                <div class="info">
-                                    <a href="property-detail.html"><h4>2186 Rinehart Road</h4></a>
-                                    <figure>Doral, FL 33178 </figure>
-                                    <div class="tag price">$ 72,000</div>
-                                </div>
-                            </div>
-                            <div class="property small">
-                                <a href="property-detail.html">
-                                    <div class="property-image">
-                                        <img alt="" src="assets/img/properties/property-09.jpg">
-                                    </div>
-                                </a>
-                                <div class="info">
-                                    <a href="property-detail.html"><h4>2479 Murphy Court</h4></a>
-                                    <figure>Minneapolis, MN 55402</figure>
-                                    <div class="tag price">$ 36,000</div>
-                                </div>
-                            </div>
-                            <div class="property small">
-                                <a href="property-detail.html">
-                                    <div class="property-image">
-                                        <img alt="" src="assets/img/properties/property-03.jpg">
-                                    </div>
-                                </a>
-                                <div class="info">
-                                    <a href="property-detail.html"><h4>1949 Tennessee Avenue</h4></a>
-                                    <figure>Minneapolis, MN 55402</figure>
-                                    <div class="tag price">$ 128,600</div>
-                                </div>
-                            </div>
-                        </aside> -->
-                        
+                                </aside>
                     </section><!-- /#sidebar -->
                 </div><!-- /.col-md-3 -->
                 <!-- end Sidebar -->

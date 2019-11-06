@@ -19,6 +19,8 @@ public role;
     password: null
   };
 
+  disabled= false;
+  sav= 'Login'
   public error = null;
   message: string;
   res: Object;
@@ -33,7 +35,8 @@ public role;
   ) { }
  
   onSubmit() {
-   
+      this.disabled= true;
+     this.sav= 'Processing'
     this.Jarwis.login(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -43,14 +46,16 @@ public role;
   handleResponse(data) {
     let snackBarRef = this.snackBar.open("Login successfully", 'Dismiss', {
       duration: 2000
-    })
-   
+    })   
    
     this.Token.handle(data.access_token);
    
     this.Auth.changeAuthStatus(true);
   
    this.router.navigateByUrl('/User/(side:Profile)');
+   this.disabled= false;
+   this.sav= 'Submited'
+
   }
 
   handleError(error) {
@@ -58,7 +63,11 @@ public role;
     this.error = error.error.error;
     let snackBarRef = this.snackBar.open(this.error, 'Dismiss', {
       duration: 2000
+
     })
+    this.disabled= false;
+    this.sav= 'Login'
+
 
   }
 
